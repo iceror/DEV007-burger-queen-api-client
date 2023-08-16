@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      
+      <h2>Burger Queen</h2>
     </>
   )
 }
