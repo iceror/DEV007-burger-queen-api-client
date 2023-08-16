@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&family=Holtwood+One+SC&family=Noto+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo Tammudu';
+}
+
+body {
+  background:  linear-gradient(-40deg, #F9F0DA 50%, #f18b31 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {  
+  color: #283D3B;
+  font-family: 'Holtwood One SC';
+  font-size: 5rem;
+}
