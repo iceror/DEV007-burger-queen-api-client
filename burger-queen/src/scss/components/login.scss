@@ -1,0 +1,46 @@
+h1 {  
+  color: $dark-teal;
+  font-family: $header-font;
+  font-size: 5rem;
+  text-shadow: $cream -5px 1px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  label {
+    font-family: $body-font;
+    color: $dark-teal;
+    font-size: 2.5rem;
+    line-height: .5;
+    margin: 0;
+  }
+
+  input {
+    border: solid $light-orange 3px;
+    border-radius: 10px;
+    background-color: $white;
+    height: 2rem;
+    width: 25rem;
+  }
+
+  button {
+    font-family: $body-font;
+    font-size: 2rem;
+    color: $white;
+    text-align: center;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 10px;
+    border: none;
+    background-color: $dark-teal;
+  }
+}
