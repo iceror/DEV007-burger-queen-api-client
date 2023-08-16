@@ -7,12 +7,16 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-css": "sass --load-path scss ./src/scss/main.scss ./src/css/build.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.65.1"
+    "sass": "^1.65.1",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
