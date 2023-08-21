@@ -21,9 +21,16 @@ const Login = () => {
   const handleClick = async (event) => {
     event.preventDefault();
     const response = await getAuth(username, password);
-    // console.log(response.user);
-    sendUserToContext(response)
+    console.log(response);
+    if (response.accessToken) {
+      sendUserToContext(response)
+    } else {
+      //llamar modal para que muestre error
+      console.log(response.message)
+      alert(response.response.data)
+    }
   }
+
 
   return (
     <>
