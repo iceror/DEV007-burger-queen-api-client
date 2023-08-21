@@ -7,6 +7,7 @@ function App() {
     <UserProvider>
       <>
         <Login />
+        {/* otros componentes */}
       </>
     </UserProvider>
   )

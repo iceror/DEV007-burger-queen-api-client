@@ -10,6 +10,8 @@ const Login = () => {
   // si quiero usar el user en otro componente:
   const { user, sendUserToContext } = useContext(UserContext);
 
+  console.log(user.role);
+
   const handleUser = (event) => {
     setUsername(event.target.value)
   }
@@ -26,11 +28,10 @@ const Login = () => {
       sendUserToContext(response)
     } else {
       //llamar modal para que muestre error
-      console.log(response.message)
+      // console.log(response.message)
       alert(response.response.data)
     }
   }
-
 
   return (
     <>
