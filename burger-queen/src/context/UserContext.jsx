@@ -8,8 +8,8 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const sendUserToContext = (user) => {
-    console.log(user);
-    setUser(user)
+    console.log(user.user);
+    setUser(user.user)
   }
 
   return <UserContext.Provider value={{ user, sendUserToContext }}>
