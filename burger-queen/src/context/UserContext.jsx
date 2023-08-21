@@ -6,10 +6,13 @@ export const useUserContext = () => useContext(UserContext)
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  // const [role, setRole] = useState(undefined);
+
+  // console.log(user, role);
 
   const sendUserToContext = (user) => {
-    console.log(user.user);
     setUser(user.user)
+    // setRole(user.user.role)
   }
 
   return <UserContext.Provider value={{ user, sendUserToContext }}>
