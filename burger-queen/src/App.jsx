@@ -1,13 +1,14 @@
-import { useState } from 'react'
 import './css/build.css'
 import Login from './Components/Login'
+import { UserProvider } from './context/UserContext'
 
 function App() {
-
   return (
-    <>
-      <Login/>
-    </>
+    <UserProvider>
+      <>
+        <Login />
+      </>
+    </UserProvider>
   )
 }
 
