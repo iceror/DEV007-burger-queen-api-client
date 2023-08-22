@@ -10,3 +10,10 @@ $white: #FFFF;
 
 $header-font: 'Holtwood One SC';
 $body-font: 'Baloo Tammudu 2';
+
+%flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
