@@ -3,8 +3,10 @@ import { getAuth } from '../api-fn/api-utils'
 import '../css/build.css'
 import { UserContext } from '../context/UserContext'
 import Modal from './Modal'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const navigate = useNavigate();
   //use useState or useRef to get data from inputs
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -27,12 +29,13 @@ const Login = () => {
     console.log(response);
     if (response.accessToken) {
       sendUserToContext(response)
+      // mandar al usuario a orders
+      navigate('orders')
     } else {
       setShow(true)
       setErrorMessage(response.response.data)
     }
   }
-
 
   return (
     <>
