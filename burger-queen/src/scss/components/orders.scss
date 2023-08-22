@@ -1,0 +1,135 @@
+.background {
+  background-color: $white;
+  width: 98vw;
+  height: 98vh;
+  border-radius: 10px;
+
+  .orders {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5rem 5rem 13.4rem 13.4rem 13.4rem;
+    row-gap: 1rem;
+
+    grid-template-areas: 
+    'header header header client client'
+    'breakfast lunch 0 order order'
+    'product product product order order'
+    'product product product order order';
+
+    h2 {
+      grid-area: header;
+      font-family: $header-font;
+      color: $dark-teal;
+      font-size: 3rem;
+    }
+
+    .breakfast {
+      grid-area: breakfast;
+    }
+
+    .lunch {
+      grid-area: lunch;
+    }
+
+    button {
+      width: 12rem;
+      height: 4rem;
+      margin: 0 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: $dark-teal;
+      font-family: $body-font;
+      font-size: 1.8rem;
+      text-align: center;
+      color: $white;
+
+      &:hover{
+        background-color: $light-teal;
+      }
+    }
+
+    .products {
+      grid-area: product;
+      width: 100%;
+      height: 60vh;
+    }
+
+    .order-container {
+      grid-area: client;
+
+      .client {
+        h3 {
+          font-family: $body-font;
+          font-size: 3rem;
+          line-height: 1.2;
+          color: $dark-teal;
+        }
+
+        .name-input {
+          display: flex;;
+          background-color: $dark-teal;
+          width: 100%;
+          border: none;
+          border-radius: 10px;
+        }
+
+        input {
+          display: flex;
+          align-items: flex-end;
+          padding: .5rem;
+          width: 70%;
+          height: 5rem;
+          border: none;
+          border-radius: 10px;
+          background-color: $dark-teal;
+          color: $white;
+          font-family: $body-font;
+          font-size: 2rem;
+          line-height: .5;
+        }
+
+        .order-num {
+          background-color: $dark-teal;
+          width: 30%;
+          height: 5rem;
+          border: none;
+          border-radius: 10px;
+          color: $white;
+          display: flex;
+          align-items: flex-end;
+          font-size: 2rem;
+        }
+      }
+
+      .order {
+        background-color: $light-teal;
+        color: $white;
+        font-family: $body-font;
+        margin-top: 1rem;
+        border-radius: 10px;
+        height: 73vh;
+        padding: 1rem;
+
+        h3 {
+          font-size: 2rem;
+          line-height: 1.5;
+        }
+
+        .order-products {
+          height: 75%;
+        }
+
+        .send-to-kitchen {
+          width: 15rem;
+          background-color: $orange;
+          float: right;
+          &:hover {
+            background-color: $light-orange;
+          }
+        }
+      }
+    }
+  }
+
+}
