@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { getAuth } from '../api-fn/api-utils'
 import '../css/build.css'
 import { UserContext } from '../context/UserContext'
+import Modal from './Modal'
 
 const Login = () => {
   //use useState or useRef to get data from inputs
@@ -9,8 +10,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // si quiero usar el user en otro componente:
   const { user, sendUserToContext } = useContext(UserContext);
-
-  console.log(user.role);
+  const [show, setShow] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleUser = (event) => {
     setUsername(event.target.value)
@@ -27,11 +28,11 @@ const Login = () => {
     if (response.accessToken) {
       sendUserToContext(response)
     } else {
-      //llamar modal para que muestre error
-      // console.log(response.message)
-      alert(response.response.data)
+      setShow(true)
+      setErrorMessage(response.response.data)
     }
   }
+
 
   return (
     <>
@@ -47,6 +48,9 @@ const Login = () => {
         </div>
         <button type='button' onClick={handleClick}>iniciar</button>
       </form>
+      <Modal  show={show} onHide={() => setShow(false) }>
+        { errorMessage }
+      </Modal>
     </>
   )
 }
