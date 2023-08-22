@@ -7,7 +7,7 @@
   .orders {
     padding: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr .8fr .8fr;
     grid-template-rows: 5rem 5rem 13.4rem 13.4rem 13.4rem;
     row-gap: 1rem;
 
