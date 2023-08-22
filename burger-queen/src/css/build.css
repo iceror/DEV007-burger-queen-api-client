@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&family=Holtwood+One+SC&family=Noto+Sans:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&family=Holtwood+One+SC&family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600;700&family=Holtwood+One+SC&family=Noto+Sans:wght@400;700&display=swap");
 .modal-overlay .modal {
   display: flex;
   flex-direction: column;
@@ -176,7 +176,7 @@ h1 {
   align-items: flex-end;
   padding: 0.5rem;
   width: 70%;
-  height: 5rem;
+  height: 4.5rem;
   border: none;
   border-radius: 10px;
   background-color: #283D3B;
@@ -188,7 +188,7 @@ h1 {
 .background .orders .order-container .client .order-num {
   background-color: #283D3B;
   width: 30%;
-  height: 5rem;
+  height: 4.5rem;
   border: none;
   border-radius: 10px;
   color: white;
@@ -200,6 +200,7 @@ h1 {
   background-color: #197278;
   color: white;
   font-family: "Baloo Tammudu 2";
+  font-weight: 700;
   margin-top: 1rem;
   border-radius: 10px;
   height: 73vh;
@@ -207,7 +208,8 @@ h1 {
 }
 .background .orders .order-container .order h3 {
   font-size: 2rem;
-  line-height: 1.5;
+  line-height: 1;
+  font-weight: 700;
 }
 .background .orders .order-container .order .order-products {
   height: 75%;
