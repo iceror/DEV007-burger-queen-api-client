@@ -8,10 +8,8 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
   // const [role, setRole] = useState(undefined);
 
-  console.log(user);
-
   const sendUserToContext = (user) => {
-    setUser(user.user)
+    setUser(user)
     // setRole(user.user.role)
   }
 
