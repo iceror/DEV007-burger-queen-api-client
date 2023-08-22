@@ -2,15 +2,18 @@ import './css/build.css'
 import Login from './Components/Login'
 import Orders from './Components/Orders'
 import { UserProvider } from './context/UserContext'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+Route
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
         <>
-          <Login />
-          <Orders />
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/orders' element={<Orders />} />
+          </Routes>
           {/* otros componentes */}
         </>
       </UserProvider>
