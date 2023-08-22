@@ -26,11 +26,10 @@ const Login = () => {
   const handleClick = async (event) => {
     event.preventDefault();
     const response = await getAuth(username, password);
-    console.log(response);
     if (response.accessToken) {
       sendUserToContext(response)
       // mandar al usuario a orders
-      navigate('orders')
+      navigate('create-orders')
     } else {
       setShow(true)
       setErrorMessage(response.response.data)

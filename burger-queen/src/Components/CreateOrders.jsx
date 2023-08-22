@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import '../css/build.css'
+import { getProducts } from "../api-fn/api-utils";
 
 
-const Orders = () => {
+const CreateOrders = () => {
   const { user, sendUserToContext } = useContext(UserContext);
+  getProducts()
 
   return (
     <div className="background">
@@ -34,4 +36,4 @@ const Orders = () => {
   )
 }
 
-export default Orders
+export default CreateOrders
