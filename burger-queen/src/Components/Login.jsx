@@ -30,12 +30,12 @@ const Login = () => {
       sendUserToContext(response);
       console.log(response);
       let storedUser = sessionStorage.setItem('user', JSON.stringify(response));
-      if(response.user.role === 'admin'){
+      if(response.user.role === 'waiter'){
         console.log('ADMIN');
         navigate('create-orders')
       } else if(response.user.role === 'cook') {
         navigate('orders')
-      } else if(response.user.role === 'waiter'){
+      } else if(response.user.role === 'admin'){
         navigate('admin-panel')
       }
     } else {
@@ -49,7 +49,7 @@ const Login = () => {
       <h1>Burger Queen</h1>
       <form className='login-form'>
         <div>
-          <label htmlFor="user">usuario</label>
+          <label htmlFor="username">usuario</label>
           <input type="text" name="username" value={username} onChange={handleUser} />
         </div>
         <div>
