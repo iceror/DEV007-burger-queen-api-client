@@ -222,5 +222,13 @@ h1 {
 .background .orders .order-container .order .send-to-kitchen:hover {
   background-color: #F4AB2E;
 }
+.background .orders .order-container .order .order-ready {
+  width: 15rem;
+  background-color: #f18b31;
+  float: right;
+}
+.background .orders .order-container .order .order-ready:hover {
+  background-color: #F4AB2E;
+}
 
 /*# sourceMappingURL=build.css.map */

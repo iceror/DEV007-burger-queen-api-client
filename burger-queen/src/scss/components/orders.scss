@@ -132,6 +132,16 @@
             background-color: $light-orange;
           }
         }
+
+        .order-ready {
+          width: 15rem;
+          background-color: $orange;
+          float: right;
+
+          &:hover {
+            background-color: $light-orange;
+          }
+        }
       }
     }
   }
