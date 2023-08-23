@@ -29,7 +29,15 @@ const Login = () => {
     if (response.accessToken) {
       sendUserToContext(response)
       // mandar al usuario a orders
-      navigate('create-orders')
+      console.log(response);
+      if(response.user.role === 'waiter'){
+        console.log('ADMIN');
+        navigate('create-orders')
+      } else if(response.user.role === 'cook') {
+        navigate('orders')
+      } else if(response.user.role === 'admin'){
+        navigate('admin-panel')
+      }
     } else {
       setShow(true)
       setErrorMessage(response.response.data)
