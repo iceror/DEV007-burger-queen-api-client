@@ -1,11 +1,18 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import '../css/build.css'
+import { getProducts } from "../api-fn/api-utils";
 
 const CreateOrders = () => {
   const { user, sendUserToContext } = useContext(UserContext);
   console.log(user);
-  if(user.user.role === 'waiter') {
+
+  // TODO por si recarga el usuario
+  // let storedUser = sessionStorage.getItem('user');
+  // console.log(storedUser.accessToken);
+
+  if (user) {
+
     return (
       <div className="background">
         <div className="orders">
