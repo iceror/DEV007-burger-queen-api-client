@@ -11,7 +11,6 @@ export const getAuth = (user, password) => {
 
   let config = {
     method: 'post',
-    maxBodyLength: Infinity,
     url: 'http://localhost:8080/login',
     //url: 'https://virtserver.swaggerhub.com/ssinuco/BurgerQueenAPI/2.0.0/login',
     headers: {
@@ -27,5 +26,28 @@ export const getAuth = (user, password) => {
     })
     .catch((error) => {
       return error;
+    });
+}
+
+export const getProducts = (accessToken) => {
+  let data = '';
+
+  let config = {
+    method: 'get',
+    url: 'http://localhost:8080/products?_page=1&_limit=10',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    },
+    data: data
+  };
+
+  return axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      return response.data
+    })
+    .catch((error) => {
+      console.log(error);
+      return error
     });
 }
