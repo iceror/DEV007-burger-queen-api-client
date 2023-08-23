@@ -5,8 +5,19 @@ import Orders from './Components/Orders'
 import { UserProvider } from './context/UserContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminPanel from './Components/AdminPanel'
+import { useEffect, useState } from 'react'
 
 function App() {
+  console.log("App Load")
+  const [userData, setUserData] = useState(() => {
+    const user = sessionStorage.getItem("user");
+    return JSON.parse(user) || null;
+  });
+
+  useEffect(() => {
+    console.log("userData updated, persist state");
+    sessionStorage.getItem("user", JSON.stringify(userData));
+  }, [userData]);
   return (
     <BrowserRouter>
       <UserProvider>

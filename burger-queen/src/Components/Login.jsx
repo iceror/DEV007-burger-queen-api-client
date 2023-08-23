@@ -28,14 +28,14 @@ const Login = () => {
     const response = await getAuth(username, password);
     if (response.accessToken) {
       sendUserToContext(response)
-      // mandar al usuario a orders
       console.log(response);
-      if(response.user.role === 'waiter'){
+      let storedUser = sessionStorage.setItem('user', JSON.stringify(response));
+      if(response.user.role === 'admin'){
         console.log('ADMIN');
         navigate('create-orders')
       } else if(response.user.role === 'cook') {
         navigate('orders')
-      } else if(response.user.role === 'admin'){
+      } else if(response.user.role === 'waiter'){
         navigate('admin-panel')
       }
     } else {
