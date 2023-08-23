@@ -1,13 +1,15 @@
-import './css/build.css'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext, UserProvider } from './context/UserContext'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './Components/Login'
 import CreateOrders from './Components/CreateOrders'
 import Orders from './Components/Orders'
-import { UserProvider } from './context/UserContext'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminPanel from './Components/AdminPanel'
-import { useEffect, useState } from 'react'
+import './css/build.css'
 
 function App() {
+  // const { user, sendUserToContext } = useContext(UserContext);
+
   console.log("App Load")
   const [userData, setUserData] = useState(() => {
     const user = sessionStorage.getItem("user");
@@ -18,6 +20,7 @@ function App() {
     console.log("userData updated, persist state");
     sessionStorage.getItem("user", JSON.stringify(userData));
   }, [userData]);
+
   return (
     <BrowserRouter>
       <UserProvider>
@@ -27,7 +30,6 @@ function App() {
             <Route path='/create-orders' element={<CreateOrders />} />
             <Route path='/orders' element={<Orders />} />
             <Route path='/admin-panel' element={<AdminPanel />} />
-
           </Routes>
         </>
       </UserProvider>

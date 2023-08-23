@@ -27,7 +27,7 @@ const Login = () => {
     event.preventDefault();
     const response = await getAuth(username, password);
     if (response.accessToken) {
-      sendUserToContext(response)
+      sendUserToContext(response);
       console.log(response);
       let storedUser = sessionStorage.setItem('user', JSON.stringify(response));
       if(response.user.role === 'admin'){
