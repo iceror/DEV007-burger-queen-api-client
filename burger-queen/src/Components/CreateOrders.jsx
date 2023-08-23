@@ -11,6 +11,13 @@ const CreateOrders = () => {
   // let storedUser = sessionStorage.getItem('user');
   // console.log(storedUser.accessToken);
 
+  const fetchProducts = async() => {
+    let products = await getProducts(user.accessToken);
+      console.log(products);
+  }
+
+  fetchProducts()
+
   if (user) {
 
     return (
@@ -19,19 +26,21 @@ const CreateOrders = () => {
           <h2>Burger Queen</h2>
           <button className="breakfast">Desayuno</button>
           <button className="lunch">Almuerzo</button>
-          <div className="products" id="products"></div>
-          <div className="order-container" id="order-container">
+          <div className="products">
+
+          </div>
+          <div className="order-container">
             <div className="client">
               <h3>Cliente</h3>
               <div className="name-input">
                 <input type="text" className="client-name" />
-                <p className="order-num" id="order-num">#</p>
+                <p className="order-num">#</p>
               </div>
             </div>
             <div className="order">
               <h3>Tu orden:</h3>
               <hr />
-              <div className="order-products" id="order-products"></div>
+              <div className="order-products"></div>
               <h3>Total:</h3>
               <button className="send-to-kitchen">Enviar a cocina</button>
             </div>

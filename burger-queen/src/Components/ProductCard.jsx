@@ -7,7 +7,7 @@ const ProductCard = () => {
   console.log(user);
 
   const renderProducts = async () => {
-    let products = await getProducts(user.accessToken)
+    let products = await getProducts(user.accessToken);
     console.log(products);
     products.forEach(product => {
       
