@@ -1,27 +1,28 @@
 import { useContext } from "react";
 import { getProducts } from "../api-fn/api-utils";
 import { UserContext } from "../context/UserContext";
+import '../css/build.css'
 
-const ProductCard = () => {
+const ProductCard = ({ products }) => {
   const { user, sendUserToContext } = useContext(UserContext);
   console.log(user);
-
-  const renderProducts = async () => {
-    let products = await getProducts(user.accessToken);
-    console.log(products);
-    products.forEach(product => {
-      
-      console.log(product);
-    })
-  }
-
-  renderProducts()
+  console.log(products);
 
   return (
-      <>
-      Product cards 
-      </>
-    )
+    <>
+      {products.map(product =>
+        <div className="card">
+          <img src={product.image} alt="" />
+          <div>
+            <p>{product.name}</p>
+            <p>{product.price}</p>
+          </div>
+        </div>)
+      }
+    </>
+  )
+
+
 }
 
 export default ProductCard
