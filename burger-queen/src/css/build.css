@@ -131,11 +131,6 @@ h1 {
 }
 .background .orders .breakfast {
   grid-area: breakfast;
-}
-.background .orders .lunch {
-  grid-area: lunch;
-}
-.background .orders button {
   width: 12rem;
   height: 4rem;
   margin: 0 1rem;
@@ -147,7 +142,23 @@ h1 {
   text-align: center;
   color: white;
 }
-.background .orders button:hover {
+.background .orders .breakfast:hover {
+  background-color: #197278;
+}
+.background .orders .lunch {
+  grid-area: lunch;
+  width: 12rem;
+  height: 4rem;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #283D3B;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+}
+.background .orders .lunch:hover {
   background-color: #197278;
 }
 .background .orders .products {
@@ -220,6 +231,14 @@ h1 {
 }
 .background .orders .order-container .order .send-to-kitchen {
   width: 15rem;
+  height: 4rem;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
   background-color: #f18b31;
   float: right;
 }
@@ -251,13 +270,39 @@ h1 {
   margin-top: 1rem;
   border-radius: 10px;
 }
-.card div {
+.card .text {
   margin-top: 1rem;
 }
-.card div p {
+.card .text p {
   text-align: center;
   font-size: 1.5rem;
   line-height: 1.5;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 8rem;
+  margin: 0;
+}
+.counter .counter-button {
+  width: 2.7rem;
+  height: 2.7rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #283D3B;
+  font-family: "Baloo Tammudu 2";
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+.counter .counter-button:hover {
+  background-color: #197278;
+}
+.counter p {
+  font-size: 1.5rem;
+  line-height: 0;
 }
 
 /*# sourceMappingURL=build.css.map */
