@@ -31,7 +31,6 @@ const Login = () => {
       console.log(response);
       let storedUser = sessionStorage.setItem('user', JSON.stringify(response));
       if(response.user.role === 'waiter'){
-        console.log('ADMIN');
         navigate('create-orders')
       } else if(response.user.role === 'cook') {
         navigate('orders')
