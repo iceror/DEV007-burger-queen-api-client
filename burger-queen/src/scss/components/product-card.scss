@@ -1,0 +1,27 @@
+.card {
+  width: 15rem;
+  height: 18rem;
+  background-color: $cream;
+  font-family: $body-font;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 14rem;
+    height: 8rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+  }
+
+  div {
+    margin-top: 1rem;
+    p {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+  }
+
+}

@@ -154,6 +154,10 @@ h1 {
   grid-area: product;
   width: 100%;
   height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 1rem;
 }
 .background .orders .order-container {
   grid-area: client;
@@ -229,6 +233,31 @@ h1 {
 }
 .background .orders .order-container .order .order-ready:hover {
   background-color: #F4AB2E;
+}
+
+.card {
+  width: 15rem;
+  height: 18rem;
+  background-color: #F9F0DA;
+  font-family: "Baloo Tammudu 2";
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card img {
+  width: 14rem;
+  height: 8rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+.card div {
+  margin-top: 1rem;
+}
+.card div p {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 /*# sourceMappingURL=build.css.map */
