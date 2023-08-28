@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { UserContext } from "../context/UserContext"
+import Sidebar from "./Sidebar";
 
 const AdminPanel = () => {
   const { user } = useContext( UserContext);
@@ -13,22 +14,7 @@ const AdminPanel = () => {
           <button className="breakfast">Empleados</button>
           <button className="lunch">Productos</button>
           <div className="orders" id="orders"></div>
-          <div className="order-container" id="order-container">
-            <div className="client">
-              <h3>Empleado</h3>
-              <div className="name-input">
-                <input type="text" className="client-name" />
-                <p className="order-num" id="order-num">#</p>
-              </div>
-            </div>
-            <div className="order">
-              <h3>Tu orden:</h3>
-              <hr />
-              <div className="order-products" id="order-products"></div>
-              <h3>Total:</h3>
-              <button className="order-ready">Listo</button>
-            </div>
-          </div>
+          <Sidebar/>
         </div>
       </div>
     )
