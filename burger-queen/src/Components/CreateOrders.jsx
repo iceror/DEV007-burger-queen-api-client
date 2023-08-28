@@ -3,6 +3,7 @@ import { UserContext } from "../context/UserContext";
 import '../css/build.css'
 import { getProducts } from "../api-fn/api-utils";
 import ProductCard from "./ProductCard";
+import Sidebar from "./Sidebar";
 
 const CreateOrders = () => {
   const { user, sendUserToContext } = useContext(UserContext);
@@ -34,22 +35,7 @@ const CreateOrders = () => {
           <div className="products">
             <ProductCard products={products} />
           </div>
-          <div className="order-container">
-            <div className="client">
-              <h3>Cliente</h3>
-              <div className="name-input">
-                <input type="text" className="client-name" />
-                <p className="order-num">#</p>
-              </div>
-            </div>
-            <div className="order">
-              <h3>Tu orden:</h3>
-              <hr />
-              <div className="order-products"></div>
-              <h3>Total:</h3>
-              <button className="send-to-kitchen">Enviar a cocina</button>
-            </div>
-          </div>
+          <Sidebar />
         </div>
       </div>
     )

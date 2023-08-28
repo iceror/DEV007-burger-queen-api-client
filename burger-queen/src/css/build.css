@@ -170,89 +170,6 @@ h1 {
   grid-template-rows: 1fr 1fr 1fr;
   row-gap: 1rem;
 }
-.background .orders .order-container {
-  grid-area: client;
-}
-.background .orders .order-container .client h3 {
-  font-family: "Baloo Tammudu 2";
-  font-size: 3rem;
-  line-height: 1.2;
-  color: #283D3B;
-}
-.background .orders .order-container .client .name-input {
-  display: flex;
-  background-color: #283D3B;
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-}
-.background .orders .order-container .client input {
-  display: flex;
-  align-items: flex-end;
-  padding: 0.5rem;
-  width: 70%;
-  height: 4.5rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #283D3B;
-  color: white;
-  font-family: "Baloo Tammudu 2";
-  font-size: 2rem;
-  line-height: 0.5;
-}
-.background .orders .order-container .client .order-num {
-  background-color: #283D3B;
-  width: 30%;
-  height: 4.5rem;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  align-items: flex-end;
-  font-size: 2rem;
-}
-.background .orders .order-container .order {
-  background-color: #197278;
-  color: white;
-  font-family: "Baloo Tammudu 2";
-  font-weight: 700;
-  margin-top: 1rem;
-  border-radius: 10px;
-  height: 73vh;
-  padding: 1rem;
-}
-.background .orders .order-container .order h3 {
-  font-size: 2rem;
-  line-height: 1;
-  font-weight: 700;
-}
-.background .orders .order-container .order .order-products {
-  height: 75%;
-}
-.background .orders .order-container .order .send-to-kitchen {
-  width: 15rem;
-  height: 4rem;
-  margin: 0 1rem;
-  border: none;
-  border-radius: 10px;
-  font-family: "Baloo Tammudu 2";
-  font-size: 1.8rem;
-  text-align: center;
-  color: white;
-  background-color: #f18b31;
-  float: right;
-}
-.background .orders .order-container .order .send-to-kitchen:hover {
-  background-color: #F4AB2E;
-}
-.background .orders .order-container .order .order-ready {
-  width: 15rem;
-  background-color: #f18b31;
-  float: right;
-}
-.background .orders .order-container .order .order-ready:hover {
-  background-color: #F4AB2E;
-}
 
 .card {
   width: 15rem;
@@ -303,6 +220,90 @@ h1 {
 .counter p {
   font-size: 1.5rem;
   line-height: 0;
+}
+
+.order-container {
+  grid-area: client;
+}
+.order-container .client h3 {
+  font-family: "Baloo Tammudu 2";
+  font-size: 3rem;
+  line-height: 1.2;
+  color: #283D3B;
+}
+.order-container .client .name-input {
+  display: flex;
+  background-color: #283D3B;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+}
+.order-container .client input {
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5rem;
+  width: 70%;
+  height: 4.5rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #283D3B;
+  color: white;
+  font-family: "Baloo Tammudu 2";
+  font-size: 2rem;
+  line-height: 0.5;
+}
+.order-container .client .order-num {
+  background-color: #283D3B;
+  width: 30%;
+  height: 4.5rem;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  font-size: 2rem;
+}
+.order-container .order {
+  background-color: #197278;
+  color: white;
+  font-family: "Baloo Tammudu 2";
+  font-weight: 700;
+  margin-top: 1rem;
+  border-radius: 10px;
+  height: 73vh;
+  padding: 1rem;
+}
+.order-container .order h3 {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 700;
+}
+.order-container .order .order-products {
+  height: 80%;
+}
+.order-container .order .send-to-kitchen {
+  width: 15rem;
+  height: 4rem;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+  background-color: #f18b31;
+  float: right;
+}
+.order-container .order .send-to-kitchen:hover {
+  background-color: #F4AB2E;
+}
+.order-container .order .order-ready {
+  width: 15rem;
+  background-color: #f18b31;
+  float: right;
+}
+.order-container .order .order-ready:hover {
+  background-color: #F4AB2E;
 }
 
 /*# sourceMappingURL=build.css.map */
