@@ -28,7 +28,6 @@ const Login = () => {
     const response = await getAuth(username, password);
     if (response.accessToken) {
       sendUserToContext(response);
-      console.log(response);
       let storedUser = sessionStorage.setItem('user', JSON.stringify(response));
       if(response.user.role === 'waiter'){
         navigate('create-orders')
