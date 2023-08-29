@@ -33,7 +33,7 @@ export const getProducts = (accessToken) => {
 
   let config = {
     method: 'get',
-    url: 'http://localhost:8080/products?_page=1&_limit=10',
+    url: 'http://localhost:8080/products?_page=1&_limit=20',
     headers: {
       'Authorization': `Bearer ${accessToken}`
     },
