@@ -5,13 +5,13 @@ import { UserContext } from '../context/UserContext'
 import Modal from './Modal'
 import { useNavigate } from 'react-router-dom'
 
-export const Login = () => {
+const Login = () => {
   const navigate = useNavigate();
   //use useState or useRef to get data from inputs
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   // si quiero usar el user en otro componente:
-  const sendUserToContext  = useContext(UserContext);
+  const {sendUserToContext}  = useContext(UserContext);
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -64,3 +64,5 @@ export const Login = () => {
   )
 }
 
+
+export default Login
