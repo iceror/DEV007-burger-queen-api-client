@@ -1,13 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { getProducts } from "../api-fn/api-utils";
 import { UserContext } from "../context/UserContext";
 import '../css/build.css'
 import QuantityCounter from "./QuantityCounter";
 
-const ProductCard = ({ products }) => {
-  const { user, sendUserToContext } = useContext(UserContext);
-  console.log(user);
-  console.log(products);
+const ProductCard = ({ products, mealTime }) => {
+  // const { user, sendUserToContext } = useContext(UserContext);
+  // console.log(user);
 
   return (
     <>
