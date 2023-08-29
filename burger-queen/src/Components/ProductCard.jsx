@@ -4,14 +4,15 @@ import { UserContext } from "../context/UserContext";
 import '../css/build.css'
 import QuantityCounter from "./QuantityCounter";
 
-const ProductCard = ({ products, mealTime }) => {
+const ProductCard = ({ products }) => {
   // const { user, sendUserToContext } = useContext(UserContext);
   // console.log(user);
+  // console.log(products);
 
   return (
     <>
       {products.map(product =>
-        <div className="card">
+        <div className="card" key={product.id}> 
           <img src={product.image} alt="" />
           <div className="text">
             <p>{product.name}</p>
