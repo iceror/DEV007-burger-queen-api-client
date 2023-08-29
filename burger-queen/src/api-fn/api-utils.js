@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const getAuth = (user, password) => {
-  console.log('IN getAuth', user, password);
   let data = JSON.stringify({
     "email": user,
     "password": password
@@ -21,7 +20,7 @@ export const getAuth = (user, password) => {
 
   return axios.request(config)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       return response.data
     })
     .catch((error) => {
@@ -47,7 +46,7 @@ export const getProducts = (accessToken) => {
       return response.data
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       return error;
     });
 }
