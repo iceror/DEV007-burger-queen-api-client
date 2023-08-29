@@ -6,10 +6,10 @@ import ProductCard from "./ProductCard";
 import Sidebar from "./Sidebar";
 
 const CreateOrders = () => {
-  const { user, sendUserToContext }  = useContext(UserContext);
+  const { user, sendUserToContext } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [mealTime, setMealTime] = useState('Desayuno');
-  const [filteredProducts, setFilteredProducts] = useState(mealTime);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   // TODO por si recarga el usuario
   // let storedUser = sessionStorage.getItem('user');
@@ -18,6 +18,7 @@ const CreateOrders = () => {
   const fetchProducts = async () => {
     let products = await getProducts(user.accessToken);
     setProducts(products);
+    setFilteredProducts(products.filter((product) => product.type === mealTime))
   }
 
   useEffect(() => {
@@ -29,9 +30,7 @@ const CreateOrders = () => {
   };
 
   useEffect(() => {
-    console.log(mealTime);
     setFilteredProducts(products.filter((product) => product.type === mealTime))
-    console.log(filteredProducts);
   }, [mealTime])
 
   if (user) {
@@ -42,14 +41,16 @@ const CreateOrders = () => {
           <button className="breakfast" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
           <button className="lunch" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
           <div className="products">
-            <ProductCard products={ filteredProducts } mealTime= { mealTime } />
+            {products.length > 0 ?
+              <ProductCard products={ filteredProducts } /> :
+              <p>No hay productos 😔</p>
+            }
           </div>
           <Sidebar />
         </div>
       </div>
     )
   }
-
 }
 
 export default CreateOrders
