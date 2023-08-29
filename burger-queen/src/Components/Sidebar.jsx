@@ -3,8 +3,7 @@ import { UserContext } from "../context/UserContext";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
-  // if its waiter/cook view show order, if its admin view show employee info
+
   if(user.user.role === 'waiter'){
     return ( 
       <div className="order-container">

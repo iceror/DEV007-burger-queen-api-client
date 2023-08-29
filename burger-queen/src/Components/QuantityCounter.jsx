@@ -1,7 +1,6 @@
 import { useState } from "react"
 import '../css/build.css'
 
-
 const QuantityCounter = () => {
   const [count, setCount] = useState(1)
 
