@@ -6,7 +6,7 @@ import ReactDom from "react-dom";
 
 const Modal = ({ show, children, onHide }) => {
 
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   // console.log(user);
   if(!show){
     return null
