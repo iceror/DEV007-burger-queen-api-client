@@ -1,8 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
+  const [ clientName, setClientName] = useState('');
+
+  const handleClient = () => {
+    setClientName(event.target.value)
+    // console.log(clientName);
+  }
+
 
   if(user.user.role === 'waiter'){
     return ( 
@@ -10,7 +17,7 @@ const Sidebar = () => {
               <div className="client">
                 <h3>Cliente</h3>
                 <div className="name-input">
-                  <input type="text" className="client-name" />
+                  <input type="text" className="client-name" value={ clientName } onChange={ handleClient }/>
                   <p className="order-num">#</p>
                 </div>
               </div>
