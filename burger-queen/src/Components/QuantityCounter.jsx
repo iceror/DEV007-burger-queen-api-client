@@ -1,15 +1,22 @@
 import { useState } from "react"
 import '../css/build.css'
 
-const QuantityCounter = () => {
+const QuantityCounter = ({onQuantityChange}) => {
   const [count, setCount] = useState(1)
 
   const substract = () => {
-    count > 1 ? setCount(count - 1) : count;
+    if (count > 1) {
+      const newCount = count - 1;
+      setCount(newCount);
+      onQuantityChange(newCount); // Pass the updated count
+    }
   }
 
   const add = () => {
-    setCount(count + 1)
+    const newCount = count + 1;
+    console.log(newCount);
+    setCount(newCount);
+    onQuantityChange(newCount); 
   }
 
   return (
