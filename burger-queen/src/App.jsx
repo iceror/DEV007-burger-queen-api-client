@@ -6,6 +6,7 @@ import CreateOrders from './Components/CreateOrders'
 import Orders from './Components/Orders'
 import AdminPanel from './Components/AdminPanel'
 import './css/build.css'
+import { OrderContextProvider } from './context/OrderContext'
 
 function App() {
   // const { user, sendUserToContext } = useContext(UserContext);
@@ -24,6 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserProvider>
+        <OrderContextProvider>
         <>
           <Routes>
             <Route path='/' element={<Login />} />
@@ -32,6 +34,7 @@ function App() {
             <Route path='/admin-panel' element={<AdminPanel />} />
           </Routes>
         </>
+        </OrderContextProvider>
       </UserProvider>
     </BrowserRouter>
   )
