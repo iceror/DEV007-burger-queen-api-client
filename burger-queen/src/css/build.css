@@ -281,6 +281,17 @@ h1 {
 }
 .order-container .order .order-products {
   height: 80%;
+  overflow-y: scroll;
+}
+.order-container .order .order-products .product-in-order {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  height: 3rem;
+}
+.order-container .order .order-products .product-in-order .bin {
+  background: none;
+  border: none;
 }
 .order-container .order .send-to-kitchen {
   width: 15rem;

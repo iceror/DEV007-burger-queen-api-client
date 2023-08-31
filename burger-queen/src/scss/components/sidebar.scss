@@ -64,6 +64,20 @@
 
     .order-products {
       height: 80%;
+      overflow-y: scroll;
+
+      .product-in-order {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        height: 3rem;
+
+
+        .bin {
+          background: none;
+          border: none;
+        }
+      }
     }
 
     .send-to-kitchen {
