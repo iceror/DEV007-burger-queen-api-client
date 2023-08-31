@@ -5,8 +5,14 @@ export const OrderContext = createContext()
 export const useOrderContext = () => useContext(OrderContext)
 
 export const OrderContextProvider = ({children}) => {
-  const [ order, setOrder ] = useState([])
-  console.log(order);
+  const [ order, setOrder ] = useState([]);
+  const [ client, setClient ] = useState('');
+  console.log(order, client);
+
+  const sendClientToContext = (client) => {
+    setClient(client)
+  }
+
   const addToOrder = (addedProduct) => {
     productIsInOrder(addedProduct)
   }
@@ -35,6 +41,6 @@ export const OrderContextProvider = ({children}) => {
   }
 
   return (
-    <OrderContext.Provider value={{order, addToOrder, deleteFromOrder, deleteOrder}}>{children}</OrderContext.Provider>
+    <OrderContext.Provider value={{order, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder}}>{children}</OrderContext.Provider>
   )
 }
