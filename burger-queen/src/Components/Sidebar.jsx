@@ -6,19 +6,15 @@ import bin from '../assets/trash-bin.png'
 
 const Sidebar = ({ selectedCard }) => {
   const { user } = useContext(UserContext);
-  const [clientName, setClientName] = useState('');
-  const [orderProducts, setOrderProducts] = useState([]);
   const { products, deleteFromOrder } = useContext(OrderContext);
-  const { client, sendClientToContext } = useContext(OrderContext);
+  const { sendClientToContext } = useContext(OrderContext);
 
   const handleClient = (event) => {
-    setClientName(event.target.value)
     sendClientToContext(event.target.value)
   }
 
   const handleDeleteFromOrder = (id) => {
     deleteFromOrder(id)
-    setOrderProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
   }
 
   if (user.user.role === 'waiter') {
@@ -27,7 +23,7 @@ const Sidebar = ({ selectedCard }) => {
         <div className="client">
           <h3>Cliente</h3>
           <div className="name-input">
-            <input type="text" className="client-name" value={clientName} onChange={(event) => handleClient(event)} />
+            <input type="text" className="client-name" onChange={(event) => handleClient(event)} />
             <p className="order-num">#</p>
           </div>
         </div>
@@ -36,7 +32,6 @@ const Sidebar = ({ selectedCard }) => {
           <hr />
           <div className="order-products">
             {products.map((productInOrder) => {
-              // console.log(productInOrder);
               if(productInOrder.count > 0){
                 return (
                   <div className="product-in-order" key={productInOrder.id}>
