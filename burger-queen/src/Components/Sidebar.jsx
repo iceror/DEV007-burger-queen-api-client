@@ -7,7 +7,8 @@ import bin from '../assets/trash-bin.png'
 const Sidebar = ({ selectedCard }) => {
   const { user } = useContext(UserContext);
   const [clientName, setClientName] = useState('');
-  const { order } = useContext(OrderContext);
+  const [orderProducts, setOrderProducts] = useState([]);
+  const { products, deleteFromOrder } = useContext(OrderContext);
   const { client, sendClientToContext } = useContext(OrderContext);
 
   const handleClient = (event) => {
@@ -15,7 +16,10 @@ const Sidebar = ({ selectedCard }) => {
     sendClientToContext(event.target.value)
   }
 
-  // console.log(order);
+  const handleDeleteFromOrder = (id) => {
+    deleteFromOrder(id)
+    setOrderProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+  }
 
   if (user.user.role === 'waiter') {
     return (
@@ -31,17 +35,18 @@ const Sidebar = ({ selectedCard }) => {
           <h3>Tu orden:</h3>
           <hr />
           <div className="order-products">
-            {/* TODO renderizar producto cuando le den click a la tarjeta */}
-            {order.map((productInOrder) => {
-              return (
-                <div className="product-in-order" key={productInOrder.id}>
-                  <p>{productInOrder.productName}</p>
-                  <p>{productInOrder.quantity} </p>
-                  <p>{productInOrder.productPrice} </p>
-                  <button className="bin"><img src={bin} alt="" /></button>
-                </div>
-
-              )
+            {products.map((productInOrder) => {
+              // console.log(productInOrder);
+              if(productInOrder.count > 0){
+                return (
+                  <div className="product-in-order" key={productInOrder.id}>
+                    <p>{productInOrder.productName}</p>
+                    <p>{productInOrder.count} </p>
+                    <p>{productInOrder.productPrice} </p>
+                    <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)}><img src={bin} alt="" /></button>
+                  </div>
+                )
+              }
             })}
           </div>
           <h3>Total:</h3>

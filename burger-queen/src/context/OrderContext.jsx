@@ -4,10 +4,11 @@ export const OrderContext = createContext()
 
 export const useOrderContext = () => useContext(OrderContext)
 
-export const OrderContextProvider = ({children}) => {
-  const [ order, setOrder ] = useState([]);
-  const [ client, setClient ] = useState('');
-  console.log(order, client);
+export const OrderContextProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [client, setClient] = useState('');
+  // const [order, setOrder] = useState({})
+  console.log('ORDER', products);
 
   const sendClientToContext = (client) => {
     setClient(client)
@@ -17,30 +18,33 @@ export const OrderContextProvider = ({children}) => {
     productIsInOrder(addedProduct)
   }
 
-  const deleteFromOrder = () => {
-    
+  const deleteFromOrder = (id) => {
+    setProducts(products.filter(product => product.id !== id));
+
   }
 
   const deleteOrder = () => {
-    
+
   }
 
   const productIsInOrder = (addedProduct) => {
-    const isInCart = order.some((product) => addedProduct.id === product.id)
+    const isInOrder = products.some((product) => addedProduct.id === product.id)
 
-    if (isInCart) {
+    if (isInOrder) {
       updateCount(addedProduct)
     } else {
-      setOrder([...order, addedProduct])
+      setProducts([...products, addedProduct])
     }
   }
 
   const updateCount = (addedProduct) => {
-    const foundProduct = order.find((product) => product.id === addedProduct.id)
-    foundProduct.count = addedProduct.count
+    const updatedOrder = products.map((product) =>
+      product.id === addedProduct.id ? { ...product, count: addedProduct.count } : product
+    );
+    setProducts(updatedOrder);
   }
 
   return (
-    <OrderContext.Provider value={{order, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder}}>{children}</OrderContext.Provider>
+    <OrderContext.Provider value={{ products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder }}>{children}</OrderContext.Provider>
   )
 }
