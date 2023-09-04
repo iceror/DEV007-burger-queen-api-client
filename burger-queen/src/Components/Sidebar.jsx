@@ -4,7 +4,7 @@ import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
 
 
-const Sidebar = ({ selectedCard }) => {
+const Sidebar = () => {
   const { user } = useContext(UserContext);
   const { products, deleteFromOrder } = useContext(OrderContext);
   const { sendClientToContext } = useContext(OrderContext);
