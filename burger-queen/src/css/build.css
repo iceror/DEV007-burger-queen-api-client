@@ -293,6 +293,10 @@ h1 {
   background: none;
   border: none;
 }
+.order-container .order .total {
+  display: flex;
+  justify-content: space-between;
+}
 .order-container .order .send-to-kitchen {
   width: 15rem;
   height: 4rem;
