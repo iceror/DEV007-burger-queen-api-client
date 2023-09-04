@@ -7,7 +7,7 @@ import bin from '../assets/trash-bin.png'
 const Sidebar = () => {
   const { user } = useContext(UserContext);
   const { products, deleteFromOrder } = useContext(OrderContext);
-  const { sendClientToContext } = useContext(OrderContext);
+  const { sendClientToContext, orderTotal } = useContext(OrderContext);
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -35,16 +35,19 @@ const Sidebar = () => {
               if(productInOrder.count > 0){
                 return (
                   <div className="product-in-order" key={productInOrder.id}>
-                    <p>{productInOrder.productName}</p>
+                    <p>{productInOrder.name}</p>
                     <p>{productInOrder.count} </p>
-                    <p>{productInOrder.productPrice} </p>
+                    <p>{productInOrder.price} </p>
                     <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)}><img src={bin} alt="" /></button>
                   </div>
                 )
               }
             })}
           </div>
-          <h3>Total:</h3>
+          <div className="total">
+          <h3 >Total: </h3>
+          <h3>${orderTotal()}.00</h3>
+          </div>
           <button className="send-to-kitchen">Enviar a cocina</button>
         </div>
       </div>
