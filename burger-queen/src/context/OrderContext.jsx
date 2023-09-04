@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const OrderContext = createContext()
 
@@ -7,12 +7,23 @@ export const useOrderContext = () => useContext(OrderContext)
 export const OrderContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [client, setClient] = useState('');
-  // const [order, setOrder] = useState({})
-  console.log('ORDER', products);
+  const [order, setOrder] = useState({})
+  // console.log('ORDER', client , products);
 
   const sendClientToContext = (client) => {
     setClient(client)
   }
+
+  useEffect(() => {
+    if (client && products.length > 0) {
+      const newOrder = {
+        client: client,
+        products: products,
+      };
+      setOrder(newOrder);
+      console.log(newOrder);
+    }
+  }, [client, products]);
 
   const addToOrder = (addedProduct) => {
     productIsInOrder(addedProduct)
@@ -43,6 +54,8 @@ export const OrderContextProvider = ({ children }) => {
     );
     setProducts(updatedOrder);
   }
+
+
 
   return (
     <OrderContext.Provider value={{ products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder }}>{children}</OrderContext.Provider>
