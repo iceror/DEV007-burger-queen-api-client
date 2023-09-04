@@ -27,8 +27,8 @@ const QuantityCounter = ({ product }) => {
     } else {
       const addedProduct = {
         id: product.id,
-        productName: product.name,
-        productPrice: product.price,
+        name: product.name,
+        price: product.price,
         count: newCount,
       };
       addToOrder(addedProduct);
