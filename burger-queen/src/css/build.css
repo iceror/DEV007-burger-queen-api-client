@@ -322,4 +322,10 @@ h1 {
   background-color: #F4AB2E;
 }
 
+.order-card {
+  font-family: "Baloo Tammudu 2";
+  background-color: #F9F0DA;
+  width: 10rem;
+}
+
 /*# sourceMappingURL=build.css.map */
