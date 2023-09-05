@@ -1,15 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { getProducts } from "../api-fn/api-utils";
-import { UserContext } from "../context/UserContext";
 import '../css/build.css'
 import QuantityCounter from "./QuantityCounter";
-import { OrderContext } from "../context/OrderContext";
 
-const ProductCard = ({ products, onCardClick }) => {
-  // console.log(products);
-
-  
-
+const ProductCard = ({ products }) => {
   return (
     <>
       {products.map(product =>
