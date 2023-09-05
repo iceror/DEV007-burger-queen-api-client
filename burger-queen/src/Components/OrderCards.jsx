@@ -5,9 +5,8 @@ const OrderCards = ({ orders }) => {
   return (
     <>
       {orders.map((order) =>
-        <div className="order-card">
+        <div className="order-card" key={order.id}>
           <div className='client'>
-
           <p>{order.client}</p>
           <p>#{order.id}</p>
           </div>
