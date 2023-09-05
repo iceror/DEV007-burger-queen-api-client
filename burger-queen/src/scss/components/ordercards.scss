@@ -1,11 +1,36 @@
 .order-card {
-  font-family: $body-font;
+  width: 15rem;
+  height: 18rem;
   background-color: $cream;
-  width: 10rem;
+  font-family: $body-font;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .client {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 0.5rem;
+  }
+
+  hr {
+    height: 2.5px;
+    width: 90%;
+    background-color: $dark-teal;
+    border: none;
+  }
+
   .products-list {
-
-    .timer {
-
-    }
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 0.5rem;
   }
 }

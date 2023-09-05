@@ -323,9 +323,36 @@ h1 {
 }
 
 .order-card {
-  font-family: "Baloo Tammudu 2";
+  width: 15rem;
+  height: 18rem;
   background-color: #F9F0DA;
-  width: 10rem;
+  font-family: "Baloo Tammudu 2";
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order-card p {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.order-card .client {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 0.5rem;
+}
+.order-card hr {
+  height: 2.5px;
+  width: 90%;
+  background-color: #283D3B;
+  border: none;
+}
+.order-card .products-list {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 0.5rem;
 }
 
 /*# sourceMappingURL=build.css.map */
