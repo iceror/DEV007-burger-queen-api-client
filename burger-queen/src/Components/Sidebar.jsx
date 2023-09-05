@@ -2,12 +2,11 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
-import { postOrder } from "../api-fn/api-utils";
 import Modal from './Modal'
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
-  const { products, deleteFromOrder, order, sendClientToContext, orderTotal } = useContext(OrderContext);
+  const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi } = useContext(OrderContext);
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -15,16 +14,21 @@ const Sidebar = () => {
     sendClientToContext(event.target.value)
   }
 
+  //TO DO useRef to empty name input
+
   const handleDeleteFromOrder = (id) => {
     deleteFromOrder(id)
   }
 
   const handlePostOrder = () => {
     if (order.client && order.products.length > 0) {
-      postOrder(order, user.accessToken)
-    } else {
+      sendOrderToApi()
+    } else if (!order.client){
       setShow(true)
-      setErrorMessage('Por favor ingrese nombre de cliente y productos')
+      setErrorMessage('Por favor ingrese nombre de cliente')
+    } else if (order.products.length === 0){
+      setShow(true)
+      setErrorMessage('Por favor ingrese productos')
     }
   }
 
@@ -36,7 +40,7 @@ const Sidebar = () => {
           <h3>Cliente</h3>
           <div className="name-input">
             <input type="text" className="client-name" onChange={(event) => handleClient(event)} />
-            <p className="order-num">#</p>
+            {/* <p className="order-num">#</p> */}
           </div>
         </div>
         <div className="order">

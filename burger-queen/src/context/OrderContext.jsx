@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { postOrder } from "../api-fn/api-utils";
+import { UserContext } from "./UserContext";
 
 export const OrderContext = createContext()
 
@@ -8,6 +10,7 @@ export const OrderContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [client, setClient] = useState('');
   const [order, setOrder] = useState({})
+  const {user} = useContext(UserContext)
   // console.log('ORDER', client , products);
 
   const sendClientToContext = (client) => {
@@ -54,13 +57,18 @@ export const OrderContextProvider = ({ children }) => {
     setProducts(updatedOrder);
   }
 
-  // TODO calcular total de la orden
   const orderTotal = () => {
     const total = products.reduce((acc, product) => acc + Number(product.price.slice(1)) * product.count, 0)
     return total
   }
 
+  const sendOrderToApi = () => {
+    postOrder(order, user.accessToken)
+    setClient('')
+    setProducts([])
+  }
+
   return (
-    <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal }}>{children}</OrderContext.Provider>
+    <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal, sendOrderToApi }}>{children}</OrderContext.Provider>
   )
 }
