@@ -18,7 +18,7 @@ const CreateOrders = () => {
   const fetchProducts = async () => {
     let products = await getProducts(user.accessToken);
     setProducts(products);
-    setFilteredProducts(products.filter((product) => product.type === mealTime))
+    setFilteredProducts(products.filter((product) => product.type === mealTime));
   }
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const CreateOrders = () => {
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
-
 
   if (user) {
     return (
