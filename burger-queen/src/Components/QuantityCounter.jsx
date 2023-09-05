@@ -1,11 +1,27 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import '../css/build.css'
 import { OrderContext } from "../context/OrderContext"
 
 const QuantityCounter = ({ product }) => {
   const [count, setCount] = useState(0)
-  const { addToOrder, deleteFromOrder } = useContext(OrderContext)
+  const { addToOrder, deleteFromOrder, order } = useContext(OrderContext)
 
+  useEffect(() => {
+    if (order.products && count > 0) {
+      let foundMatch = false; // Initialize a flag to false
+  
+      order.products.forEach((productInOrder) => {
+        if (productInOrder.id === product.id) {
+          foundMatch = true; // Set the flag to true if a match is found
+        } 
+      });
+  
+      if (!foundMatch) {
+        setCount(0);
+      }
+    }
+
+  }, [order])
 
   const substract = () => {
     if (count > 0) {
