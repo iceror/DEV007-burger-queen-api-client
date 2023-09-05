@@ -21,7 +21,7 @@ export const OrderContextProvider = ({ children }) => {
         products: products,
       };
       setOrder(newOrder);
-      console.log(newOrder);
+      // console.log(newOrder);
     }
   }, [client, products]);
 
@@ -32,8 +32,6 @@ export const OrderContextProvider = ({ children }) => {
   const deleteFromOrder = (id) => {
     setProducts(products.filter(product => product.id !== id));
   }
-
-
 
   const deleteOrder = () => {
 
