@@ -15,7 +15,7 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (client && products.length > 0) {
+    if (client || products.length > 0) {
       const newOrder = {
         client: client,
         products: products,
@@ -31,8 +31,9 @@ export const OrderContextProvider = ({ children }) => {
 
   const deleteFromOrder = (id) => {
     setProducts(products.filter(product => product.id !== id));
-
   }
+
+
 
   const deleteOrder = () => {
 
@@ -62,6 +63,6 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   return (
-    <OrderContext.Provider value={{ products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal }}>{children}</OrderContext.Provider>
+    <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal }}>{children}</OrderContext.Provider>
   )
 }
