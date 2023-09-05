@@ -57,23 +57,47 @@ export const postOrder = (order, accessToken) => {
     'status': 'pending',
     'dateEntry': new Date().toLocaleString()
   });
-  
+
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
     url: 'http://localhost:8080/orders',
-    headers: { 
-      'Content-Type': 'application/json', 
+    headers: {
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    data : data
+    data: data
   };
-  
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+
+  return axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export const getOrders = (accessToken) => {
+  let data = '';
+
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'http://localhost:8080/orders?_page=1&_limit=50',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    },
+    data: data
+  };
+
+  return axios.request(config)
+    .then((response) => {
+      // console.log(JSON.stringify(response.data));
+      return response.data
+    })
+    .catch((error) => {
+      // console.log(error);
+      return error
+    });
 }
