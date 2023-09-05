@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
+import { postOrder } from "../api-fn/api-utils";
 
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
-  const { products, deleteFromOrder } = useContext(OrderContext);
-  const { sendClientToContext, orderTotal } = useContext(OrderContext);
+  const { products, deleteFromOrder, order, sendClientToContext, orderTotal } = useContext(OrderContext);
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -15,6 +15,10 @@ const Sidebar = () => {
 
   const handleDeleteFromOrder = (id) => {
     deleteFromOrder(id)
+  }
+
+  const handlePostOrder = () => {
+    postOrder(order, user.accessToken)
   }
 
   if (user.user.role === 'waiter') {
@@ -48,7 +52,7 @@ const Sidebar = () => {
             <h3 >Total: </h3>
             <h3>${orderTotal()}.00</h3>
           </div>
-          <button className="send-to-kitchen">Enviar a cocina</button>
+          <button className="send-to-kitchen" onClick={handlePostOrder}>Enviar a cocina</button>
         </div>
       </div>
     )

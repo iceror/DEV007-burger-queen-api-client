@@ -50,3 +50,30 @@ export const getProducts = (accessToken) => {
       return error;
     });
 }
+
+export const postOrder = (order, accessToken) => {
+  let data = JSON.stringify({
+    ...order,
+    'status': 'pending',
+    'dateEntry': new Date().toLocaleString()
+  });
+  
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: 'http://localhost:8080/orders',
+    headers: { 
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${accessToken}`
+    },
+    data : data
+  };
+  
+  axios.request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
