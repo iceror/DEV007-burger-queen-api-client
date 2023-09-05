@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 import Sidebar from "./Sidebar";
 
 const CreateOrders = () => {
-  const { user, sendUserToContext } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [mealTime, setMealTime] = useState('Desayuno');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -33,6 +33,7 @@ const CreateOrders = () => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
 
+
   if (user) {
     return (
       <div className="background">
@@ -42,7 +43,7 @@ const CreateOrders = () => {
           <button className="lunch" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
           <div className="products">
             {products.length > 0 ?
-              <ProductCard products={ filteredProducts } /> :
+              <ProductCard products={filteredProducts} /> :
               <p>No hay productos 😔</p>
             }
           </div>
