@@ -1,23 +1,24 @@
 import '../css/build.css'
 
-const OrderCards = ({orders}) => {
+const OrderCards = ({ orders }) => {
   // console.log('INSIDE ORDERCARDS', orders);
   return (
     <>
-      {orders.map((order) => 
+      {orders.map((order) =>
         <div className="order-card">
+          <div className='client'>
+
           <p>{order.client}</p>
           <p>#{order.id}</p>
+          </div>
           <hr />
-          <div className="products-list">
-            {order.products.map((product) => 
-            <>
+          {order.products.map((product) =>
+            <div className="products-list">
               <p>{product.name}</p>
               <p>{product.count}</p>
-              <div className="timer">timer ⏱️</div>
-            </>
-              ) }
-          </div>
+            </div>
+          )}
+          <div className="timer">timer ⏱️</div>
         </div>
       )
 

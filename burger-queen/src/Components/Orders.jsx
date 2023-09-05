@@ -26,7 +26,7 @@ const Orders = () => {
       <div className="background">
         <div className="orders">
           <h2>Burger Queen</h2>
-          <div className="orders-container" >
+          <div className="products" >
             { orders.length > 0 ?
               <OrderCards orders={orders} /> :
               <p>No hay órdenes pendientes 😄</p>
