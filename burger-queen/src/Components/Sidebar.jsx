@@ -81,7 +81,9 @@ const Sidebar = () => {
         <div className="client">
           <h3>Cliente</h3>
           <div className="name-input">
-            <input type="text" className="client-name" />
+            {/* <input type="text" className="client-name" /> */}
+            {/* TODO show client name && order id */}
+            <h3 className="client-name"></h3>
             <p className="order-num">#</p>
           </div>
         </div>
