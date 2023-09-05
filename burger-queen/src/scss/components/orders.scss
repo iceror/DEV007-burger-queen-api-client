@@ -13,7 +13,7 @@
 
     grid-template-areas:
       'header header header client client'
-      'breakfast lunch 0 order order'
+      'button1 button2 0 order order'
       'product product product order order'
       'product product product order order';
 
@@ -24,8 +24,8 @@
       font-size: 3rem;
     }
 
-    .breakfast {
-      grid-area: breakfast;
+    .button1 {
+      grid-area: button1;
       width: 12rem;
       height: 4rem;
       margin: 0 1rem;
@@ -42,8 +42,8 @@
       }
     }
 
-    .lunch {
-      grid-area: lunch;
+    .button2 {
+      grid-area: button2;
       width: 12rem;
       height: 4rem;
       margin: 0 1rem;

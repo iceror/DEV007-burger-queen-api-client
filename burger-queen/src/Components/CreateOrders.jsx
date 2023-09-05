@@ -38,8 +38,8 @@ const CreateOrders = () => {
       <div className="background">
         <div className="orders">
           <h2>Burger Queen</h2>
-          <button className="breakfast" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
-          <button className="lunch" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
+          <button className="button1" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
+          <button className="button2" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
           <div className="products">
             {products.length > 0 ?
               <ProductCard products={filteredProducts} /> :

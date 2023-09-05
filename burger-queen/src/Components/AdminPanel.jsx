@@ -11,8 +11,8 @@ const AdminPanel = () => {
       <div className="background">
         <div className="orders">
           <h2>Burger Queen</h2>
-          <button className="breakfast">Empleados</button>
-          <button className="lunch">Productos</button>
+          <button className="button1">Empleados</button>
+          <button className="button2">Productos</button>
           <div className="orders" id="orders"></div>
           <Sidebar/>
         </div>

@@ -26,13 +26,15 @@ const Orders = () => {
       <div className="background">
         <div className="orders">
           <h2>Burger Queen</h2>
+          <button className="button1">Pendientes</button>
+          <button className="button2">Listas</button>
           <div className="products" >
             { orders.length > 0 ?
               <OrderCards orders={orders} /> :
               <p>No hay órdenes pendientes 😄</p>
             }
           </div>
-          <Sidebar></Sidebar>
+          <Sidebar />
         </div>
       </div>
     )
