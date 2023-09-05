@@ -32,21 +32,21 @@ const Sidebar = () => {
           <hr />
           <div className="order-products">
             {products.map((productInOrder) => {
-              if(productInOrder.count > 0){
+              if (productInOrder.count > 0) {
                 return (
                   <div className="product-in-order" key={productInOrder.id}>
                     <p>{productInOrder.name}</p>
                     <p>{productInOrder.count} </p>
                     <p>{productInOrder.price} </p>
-                    <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)}><img src={bin} alt="" /></button>
+                    <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)} ><img src={bin} alt="" /></button>
                   </div>
                 )
               }
             })}
           </div>
           <div className="total">
-          <h3 >Total: </h3>
-          <h3>${orderTotal()}.00</h3>
+            <h3 >Total: </h3>
+            <h3>${orderTotal()}.00</h3>
           </div>
           <button className="send-to-kitchen">Enviar a cocina</button>
         </div>
