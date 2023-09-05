@@ -3,11 +3,13 @@ import { UserContext } from "../context/UserContext";
 import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
 import { postOrder } from "../api-fn/api-utils";
-
+import Modal from './Modal'
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal } = useContext(OrderContext);
+  const [show, setShow] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -18,11 +20,17 @@ const Sidebar = () => {
   }
 
   const handlePostOrder = () => {
-    postOrder(order, user.accessToken)
+    if (order.client && order.products.length > 0) {
+      postOrder(order, user.accessToken)
+    } else {
+      setShow(true)
+      setErrorMessage('Por favor ingrese nombre de cliente y productos')
+    }
   }
 
   if (user.user.role === 'waiter') {
     return (
+      <>
       <div className="order-container">
         <div className="client">
           <h3>Cliente</h3>
@@ -55,6 +63,10 @@ const Sidebar = () => {
           <button className="send-to-kitchen" onClick={handlePostOrder}>Enviar a cocina</button>
         </div>
       </div>
+      <Modal  show={show} onHide={() => setShow(false) }>
+        { errorMessage }
+      </Modal>
+      </>
     )
   } else if (user.user.role === 'admin') {
     return (
@@ -95,6 +107,7 @@ const Sidebar = () => {
           <button className="send-to-kitchen">Orden lista</button>
         </div>
       </div>
+
     )
   }
 }
