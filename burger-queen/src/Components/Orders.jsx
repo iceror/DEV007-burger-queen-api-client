@@ -7,6 +7,7 @@ import OrderCards from "./OrderCards"
 const Orders = () => {
   const { user } = useContext(UserContext);
   const [orders, setOrders] = useState([])
+  const [orderData, setOrderData] = useState()
   // console.log(user);
 
   const fetchOrders = async () => {
@@ -20,6 +21,9 @@ const Orders = () => {
   }, []);
 
   // TO DO create timer from order entry to when it is done 
+  const handleCardClick = (order) => {
+    setOrderData(order)
+  }
 
   if (user.user.role === 'cook') {
     return (
@@ -29,12 +33,12 @@ const Orders = () => {
           <button className="button1">Pendientes</button>
           <button className="button2">Listas</button>
           <div className="products" >
-            { orders.length > 0 ?
-              <OrderCards orders={orders} /> :
+            {orders.length > 0 ?
+              <OrderCards orders={orders} handleCardClick={handleCardClick} /> :
               <p>No hay órdenes pendientes 😄</p>
             }
           </div>
-          <Sidebar />
+          <Sidebar orderData={orderData} />
         </div>
       </div>
     )

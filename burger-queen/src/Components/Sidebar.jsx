@@ -4,7 +4,7 @@ import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
 import Modal from './Modal'
 
-const Sidebar = () => {
+const Sidebar = ({ orderData }) => {
   const { user } = useContext(UserContext);
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi } = useContext(OrderContext);
   const [show, setShow] = useState(false);
@@ -99,20 +99,27 @@ const Sidebar = () => {
           <h3>Cliente</h3>
           <div className="name-input">
             {/* <input type="text" className="client-name" /> */}
-            {/* TODO show client name && order id */}
-            <h3 className="client-name"></h3>
-            <p className="order-num">#</p>
+            <h3 className="client-name">{orderData ? orderData.client : ''}</h3>
+            <p className="order-num">#{orderData ? orderData.id : ''}</p>
           </div>
         </div>
         <div className="order">
           <h3>Tu orden:</h3>
           <hr />
-          <div className="order-products"></div>
-          <h3>Total:</h3>
+          <div className="order-products" key={orderData ? orderData.id : null}>
+            {orderData ?
+              orderData.products.map(product =>
+                <>
+                  <p>{product.name}</p>
+                  <p>{product.count}</p>
+                </>
+              ) : ''}
+          </div>
+            {/* TODO setTimer*/}
+          <h3>Tiempo</h3>
           <button className="send-to-kitchen">Orden lista</button>
         </div>
       </div>
-
     )
   }
 }
