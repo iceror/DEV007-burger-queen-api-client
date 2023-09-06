@@ -10,6 +10,7 @@ export const OrderContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [client, setClient] = useState('');
   const [order, setOrder] = useState({})
+  const [total, setTotal] = useState()
   const {user} = useContext(UserContext)
   // console.log('ORDER', client , products);
 
@@ -22,6 +23,7 @@ export const OrderContextProvider = ({ children }) => {
       const newOrder = {
         client: client,
         products: products,
+        total: total
       };
       setOrder(newOrder);
       // console.log(newOrder);
@@ -58,7 +60,8 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   const orderTotal = () => {
-    const total = products.reduce((acc, product) => acc + Number(product.price.slice(1)) * product.count, 0)
+    const total = products.reduce((acc, product) => acc + Number(product.price.slice(1)) * product.count, 0);
+    setTotal(total) 
     return total
   }
 
