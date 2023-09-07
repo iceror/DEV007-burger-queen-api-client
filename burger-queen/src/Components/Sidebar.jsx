@@ -7,7 +7,7 @@ import Timer from "./OrderTimer";
 
 const Sidebar = ({ orderData }) => {
   const { user } = useContext(UserContext);
-  const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi } = useContext(OrderContext);
+  const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   let clientRef = useRef('');
@@ -32,6 +32,10 @@ const Sidebar = ({ orderData }) => {
       setShow(true)
       setErrorMessage('Por favor ingrese productos')
     }
+  }
+
+  const handleUpdateOrder = (orderData) => {
+    updateOrderInApi(orderData)
   }
 
   if (user.user.role === 'waiter') {
@@ -101,7 +105,7 @@ const Sidebar = ({ orderData }) => {
           <div className="name-input">
             {/* <input type="text" className="client-name" /> */}
             <h3 className="client-name">{orderData ? orderData.client : ''}</h3>
-            <p className="order-num">{orderData ? '#'+orderData.id : ''}</p>
+            <p className="order-num">{orderData ? '#' + orderData.id : ''}</p>
           </div>
         </div>
         <div className="order">
@@ -110,15 +114,14 @@ const Sidebar = ({ orderData }) => {
           <div className="order-products" key={orderData ? orderData.id : null}>
             {orderData ?
               orderData.products.map(product =>
-                <div className="product-in-order">
+                <div className="product-in-order" key={orderData.id + product.id}>
                   <p>{product.name}</p>
                   <p>{product.count}</p>
                 </div>
-                
               ) : ''}
           </div>
-          <Timer orderData={orderData}/>
-          <button className="send-to-kitchen">Orden lista</button>
+          <Timer orderData={orderData} />
+          <button className="send-to-kitchen" onClick={() => handleUpdateOrder(orderData)}>Orden lista</button>
         </div>
       </div>
     )
