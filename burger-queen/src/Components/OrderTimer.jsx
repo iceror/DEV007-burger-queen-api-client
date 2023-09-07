@@ -9,16 +9,16 @@ const Timer = ({ orderData }) => {
       const currentTime = new Date();
       const difference = currentTime - dateEntry;
       const secondsPassed = Math.floor(difference / 1000);
-      const minutes = Math.floor(secondsPassed/60);
+      const minutes = Math.floor(secondsPassed / 60);
       const seconds = secondsPassed % 60;
-      return {minutes, seconds}
+      return { minutes, seconds }
     }
 
     useEffect(() => {
       const interval = setInterval(() => {
         setTime(timeDifference());
       }, 1000);
-      
+
       return () => {
         clearInterval(interval);
       };
@@ -26,7 +26,7 @@ const Timer = ({ orderData }) => {
 
     return (
       <>
-        <h3>{time ? time.minutes + ':' + time.seconds : ''}</h3>
+        <h3 className="timer">{time ? time.minutes + ':' + time.seconds : ''}</h3>
       </>
     )
   }
