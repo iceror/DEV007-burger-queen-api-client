@@ -100,7 +100,7 @@ const Sidebar = ({ orderData }) => {
           <div className="name-input">
             {/* <input type="text" className="client-name" /> */}
             <h3 className="client-name">{orderData ? orderData.client : ''}</h3>
-            <p className="order-num">#{orderData ? orderData.id : ''}</p>
+            <p className="order-num">{orderData ? '#'+orderData.id : ''}</p>
           </div>
         </div>
         <div className="order">
@@ -109,10 +109,11 @@ const Sidebar = ({ orderData }) => {
           <div className="order-products" key={orderData ? orderData.id : null}>
             {orderData ?
               orderData.products.map(product =>
-                <>
+                <div className="product-in-order">
                   <p>{product.name}</p>
                   <p>{product.count}</p>
-                </>
+                </div>
+                
               ) : ''}
           </div>
             {/* TODO setTimer*/}
