@@ -20,7 +20,6 @@ const Orders = () => {
     fetchOrders()
   }, []);
 
-  // TO DO create timer from order entry to when it is done 
   const handleCardClick = (order) => {
     setOrderData(order)
   }
