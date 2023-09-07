@@ -11,7 +11,6 @@ export const getAuth = (user, password) => {
   let config = {
     method: 'post',
     url: 'http://localhost:8080/login',
-    //url: 'https://virtserver.swaggerhub.com/ssinuco/BurgerQueenAPI/2.0.0/login',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -98,6 +97,36 @@ export const getOrders = (accessToken) => {
     })
     .catch((error) => {
       // console.log(error);
+      return error
+    });
+}
+
+export const updateOrder = (order, accessToken) => {
+  let data = JSON.stringify(
+    {
+      'status': 'delivered',
+      'dateProcessed': new Date().toLocaleString()
+    }
+  );
+
+  let config = {
+    method: 'patch',
+    maxBodyLength: Infinity,
+    url: `http://localhost:8080/orders/${order.id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    },
+    data: data
+  };
+
+  return axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      return response.data
+    })
+    .catch((error) => {
+      console.log(error);
       return error
     });
 }
