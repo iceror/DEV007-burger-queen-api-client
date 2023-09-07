@@ -71,7 +71,7 @@
     }
 
     .order-products {
-      height: 80%;
+      height: 83%;
       overflow-y: scroll;
 
       .product-in-order {
@@ -108,6 +108,11 @@
       &:hover {
         background-color: $light-orange;
       }
+    }
+
+    .timer {
+      font-size: 2rem;
+      line-height: .3;
     }
 
     .order-ready {

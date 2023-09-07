@@ -288,7 +288,7 @@ h1 {
   font-weight: 700;
 }
 .order-container .order .order-products {
-  height: 80%;
+  height: 83%;
   overflow-y: scroll;
 }
 .order-container .order .order-products .product-in-order {
@@ -320,6 +320,10 @@ h1 {
 }
 .order-container .order .send-to-kitchen:hover {
   background-color: #F4AB2E;
+}
+.order-container .order .timer {
+  font-size: 2rem;
+  line-height: 0.3;
 }
 .order-container .order .order-ready {
   width: 15rem;
