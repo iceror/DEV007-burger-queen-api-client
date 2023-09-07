@@ -13,7 +13,7 @@ const OrderCards = ({ orders, handleCardClick }) => {
           </div>
           <hr />
           {order.products.map((product) =>
-            <div className="products-list">
+            <div className="products-list" >
               <p>{product.name}</p>
               <p>{product.count}</p>
             </div>
@@ -22,7 +22,6 @@ const OrderCards = ({ orders, handleCardClick }) => {
             timer ⏱️
           </div>
         </div>
-
       )
       }
     </>
