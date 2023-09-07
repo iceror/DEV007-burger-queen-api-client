@@ -234,6 +234,7 @@ h1 {
 }
 .order-container .client .name-input {
   display: flex;
+  align-items: center;
   background-color: #283D3B;
   width: 100%;
   border: none;
@@ -241,8 +242,7 @@ h1 {
 }
 .order-container .client input {
   display: flex;
-  align-items: flex-end;
-  padding: 0.5rem;
+  align-items: center;
   width: 70%;
   height: 4.5rem;
   border: none;
@@ -254,7 +254,10 @@ h1 {
   line-height: 0.5;
 }
 .order-container .client .client-name {
-  width: 100%;
+  width: 90%;
+  color: white;
+  font-family: "Baloo Tammudu 2";
+  margin: 1rem 0 0 1rem;
 }
 .order-container .client .order-num {
   background-color: #283D3B;
@@ -264,8 +267,10 @@ h1 {
   border-radius: 10px;
   color: white;
   display: flex;
-  align-items: flex-end;
-  font-size: 2rem;
+  align-items: center;
+  font-size: 3rem;
+  font-family: "Baloo Tammudu 2";
+  margin: 1rem 0 0 1rem;
 }
 .order-container .order {
   background-color: #197278;

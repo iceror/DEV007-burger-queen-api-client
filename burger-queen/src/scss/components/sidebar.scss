@@ -11,6 +11,7 @@
 
     .name-input {
       display: flex;
+      align-items: center;
       background-color: $dark-teal;
       width: 100%;
       border: none;
@@ -19,8 +20,7 @@
 
     input {
       display: flex;
-      align-items: flex-end;
-      padding: .5rem;
+      align-items: center;
       width: 70%;
       height: 4.5rem;
       border: none;
@@ -33,7 +33,10 @@
     }
 
     .client-name {
-      width: 100%;
+      width: 90%;
+      color: $white;
+      font-family: $body-font;
+      margin: 1rem 0 0 1rem;
     }
 
     .order-num {
@@ -44,8 +47,10 @@
       border-radius: 10px;
       color: $white;
       display: flex;
-      align-items: flex-end;
-      font-size: 2rem;
+      align-items: center;
+      font-size: 3rem;
+      font-family: $body-font;
+      margin: 1rem 0 0 1rem;
     }
   }
 
