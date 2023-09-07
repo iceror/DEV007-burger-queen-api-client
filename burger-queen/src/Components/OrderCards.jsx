@@ -18,9 +18,6 @@ const OrderCards = ({ orders, handleCardClick }) => {
               <p>{product.count}</p>
             </div>
           )}
-          <div className="timer">
-            timer ⏱️
-          </div>
         </div>
       )
       }
