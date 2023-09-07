@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import '../css/build.css'
 import { getProducts } from "../api-fn/api-utils";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCards";
 import Sidebar from "./Sidebar";
 
 const CreateOrders = () => {
