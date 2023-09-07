@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { postOrder } from "../api-fn/api-utils";
+import { postOrder, updateOrder } from "../api-fn/api-utils";
 import { UserContext } from "./UserContext";
 
 export const OrderContext = createContext()
@@ -71,7 +71,11 @@ export const OrderContextProvider = ({ children }) => {
     setProducts([])
   }
 
+  const updateOrderInApi = (orderData) => {
+    updateOrder(orderData, user.accessToken)
+  }
+
   return (
-    <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal, sendOrderToApi }}>{children}</OrderContext.Provider>
+    <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal, sendOrderToApi, updateOrderInApi }}>{children}</OrderContext.Provider>
   )
 }
