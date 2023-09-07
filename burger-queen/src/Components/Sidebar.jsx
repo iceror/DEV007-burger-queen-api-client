@@ -3,6 +3,7 @@ import { UserContext } from "../context/UserContext";
 import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
 import Modal from './Modal'
+import Timer from "./OrderTimer";
 
 const Sidebar = ({ orderData }) => {
   const { user } = useContext(UserContext);
@@ -116,8 +117,7 @@ const Sidebar = ({ orderData }) => {
                 
               ) : ''}
           </div>
-            {/* TODO setTimer*/}
-          <h3>Tiempo</h3>
+          <Timer orderData={orderData}/>
           <button className="send-to-kitchen">Orden lista</button>
         </div>
       </div>
