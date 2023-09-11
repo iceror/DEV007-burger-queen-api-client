@@ -37,7 +37,7 @@ const Sidebar = ({ orderData }) => {
   const handleUpdateOrder = (orderData) => {
     updateOrderInApi(orderData)
   }
-
+// status delivered useEffect depende del status
   if (user.user.role === 'waiter') {
     return (
       <>
@@ -52,20 +52,20 @@ const Sidebar = ({ orderData }) => {
           <div className="order">
             <h3>Tu orden:</h3>
             <hr />
-            <div className="order-products">
+            <ol className="order-products">
               {products.map((productInOrder) => {
                 if (productInOrder.count > 0) {
                   return (
-                    <div className="product-in-order" key={productInOrder.id}>
+                    <li className="product-in-order" key={productInOrder.id}>
                       <p>{productInOrder.name}</p>
                       <p>{productInOrder.count} </p>
                       <p>{productInOrder.price} </p>
                       <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)} ><img src={bin} alt="" /></button>
-                    </div>
+                    </li>
                   )
                 }
               })}
-            </div>
+            </ol>
             <div className="total">
               <h3 >Total: </h3>
               <h3>${orderTotal()}.00</h3>
@@ -111,15 +111,15 @@ const Sidebar = ({ orderData }) => {
         <div className="order">
           <h3>Tu orden:</h3>
           <hr />
-          <div className="order-products" key={orderData ? orderData.id : null}>
+          <ol className="order-products" key={orderData ? orderData.id : null}>
             {orderData ?
               orderData.products.map(product =>
-                <div className="product-in-order" key={orderData.id + product.id}>
+                <li className="product-in-order" key={orderData.id + product.id}>
                   <p>{product.name}</p>
                   <p>{product.count}</p>
-                </div>
+                </li>
               ) : ''}
-          </div>
+          </ol>
           <Timer orderData={orderData} />
           <button className="send-to-kitchen" onClick={() => handleUpdateOrder(orderData)}>Orden lista</button>
         </div>

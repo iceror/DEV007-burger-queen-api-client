@@ -36,18 +36,20 @@ const CreateOrders = () => {
   if (user) {
     return (
       <div className="background">
-        <div className="orders">
+        <main className="orders">
           <h2>Burger Queen</h2>
           <button className="button1" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
           <button className="button2" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
-          <div className="products">
+          {/* TO DO añadir vista para entregar pedidos */}
+          {/* <button className="button3">Listas</button> */}
+          <ol className="products">
             {products.length > 0 ?
               <ProductCard products={filteredProducts} /> :
               <p>No hay productos 😔</p>
             }
-          </div>
+          </ol>
           <Sidebar />
-        </div>
+        </main>
       </div>
     )
   }

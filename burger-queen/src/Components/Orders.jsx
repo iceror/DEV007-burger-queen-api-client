@@ -36,18 +36,18 @@ const Orders = () => {
   if (user.user.role === 'cook') {
     return (
       <div className="background">
-        <div className="orders">
+        <main className="orders">
           <h2>Burger Queen</h2>
           <button className="button1" onClick={() => handleStatusButtonClick('pending')}>Pendientes</button>
-          <button className="button2" onClick={() => handleStatusButtonClick('delivered')}>Listas</button>
-          <div className="products" >
+          <button className="button2" onClick={() => handleStatusButtonClick('ready')}>Listas</button>
+          <ol className="products" >
             {orders.length > 0 ?
               <OrderCards orders={filteredOrders} handleCardClick={handleCardClick} /> :
-              <p>No hay órdenes pendientes 😄</p>
+              <h3>No hay órdenes pendientes 😄</h3>
             }
-          </div>
+          </ol>
           <Sidebar orderData={orderData} />
-        </div>
+        </main>
       </div>
     )
   }
