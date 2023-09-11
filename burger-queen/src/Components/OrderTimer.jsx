@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Timer = ({ orderData }) => {
   if (orderData) {
-    const [time, setTime] = useState()
+    const [time, setTime] = useState({ minutes: 0, seconds: 0 })
 
     const timeDifference = () => {
       const dateEntry = new Date(orderData.dateEntry);
@@ -15,14 +15,18 @@ const Timer = ({ orderData }) => {
     }
 
     useEffect(() => {
-      const interval = setInterval(() => {
-        setTime(timeDifference());
-      }, 1000);
+      if (orderData.status === 'pending') {
+        const interval = setInterval(() => {
+          setTime(timeDifference());
+        }, 1000);
 
-      return () => {
-        clearInterval(interval);
-      };
-    }, [orderData.id]);
+        return () => {
+          clearInterval(interval);
+        };
+      } else if (orderData.status === 'ready') {
+        setTime(timeDifference())
+      }
+    }, [orderData]);
 
     return (
       <>
