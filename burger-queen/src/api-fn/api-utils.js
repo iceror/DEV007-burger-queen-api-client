@@ -104,7 +104,7 @@ export const getOrders = (accessToken) => {
 export const updateOrder = (order, accessToken) => {
   let data = JSON.stringify(
     {
-      'status': 'delivered',
+      'status': 'ready',
       'dateProcessed': new Date().toLocaleString()
     }
   );
