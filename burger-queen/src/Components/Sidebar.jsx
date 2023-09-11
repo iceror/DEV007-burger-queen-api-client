@@ -10,7 +10,13 @@ const Sidebar = ({ orderData }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [timerVisible, setTimerVisible] = useState(true)
   let clientRef = useRef('');
+  let clientNameRef = useRef(null);
+  let orderIdRef = useRef(null)
+  let orderRef = useRef(null)
+  let timerRef = useRef(null)
+
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -35,9 +41,13 @@ const Sidebar = ({ orderData }) => {
   }
 
   const handleUpdateOrder = (orderData) => {
-    updateOrderInApi(orderData)
+    updateOrderInApi(orderData);
+    clientNameRef.current.textContent = '';
+    orderIdRef.current.textContent = '';
+    orderRef.current.innerHTML = '';
+    setTimerVisible(false)
   }
-// status delivered useEffect depende del status
+
   if (user.user.role === 'waiter') {
     return (
       <>
@@ -46,7 +56,6 @@ const Sidebar = ({ orderData }) => {
             <h3>Cliente</h3>
             <div className="name-input">
               <input type="text" className="client-name" onChange={(event) => handleClient(event)} ref={clientRef} />
-              {/* <p className="order-num">#</p> */}
             </div>
           </div>
           <div className="order">
@@ -102,16 +111,16 @@ const Sidebar = ({ orderData }) => {
       <div className="order-container">
         <div className="client">
           <h3>Cliente</h3>
-          <div className="name-input">
+          <div className="name-input" >
             {/* <input type="text" className="client-name" /> */}
-            <h3 className="client-name">{orderData ? orderData.client : ''}</h3>
-            <p className="order-num">{orderData ? '#' + orderData.id : ''}</p>
+            <h3 className="client-name" ref={clientNameRef}>{orderData ? orderData.client : ''}</h3>
+            <p className="order-num" ref={orderIdRef}>{orderData ? '#' + orderData.id : ''}</p>
           </div>
         </div>
         <div className="order">
           <h3>Tu orden:</h3>
           <hr />
-          <ol className="order-products" key={orderData ? orderData.id : null}>
+          <ol className="order-products" key={orderData ? orderData.id : null} ref={orderRef}>
             {orderData ?
               orderData.products.map(product =>
                 <li className="product-in-order" key={orderData.id + product.id}>
@@ -120,7 +129,7 @@ const Sidebar = ({ orderData }) => {
                 </li>
               ) : ''}
           </ol>
-          <Timer orderData={orderData} />
+          {timerVisible && <Timer orderData={orderData} />}
           <button className="send-to-kitchen" onClick={() => handleUpdateOrder(orderData)}>Orden lista</button>
         </div>
       </div>
