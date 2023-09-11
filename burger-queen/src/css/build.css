@@ -288,7 +288,7 @@ h1 {
   font-weight: 700;
 }
 .order-container .order .order-products {
-  height: 83%;
+  height: 80%;
   overflow-y: scroll;
 }
 .order-container .order .order-products .product-in-order {
