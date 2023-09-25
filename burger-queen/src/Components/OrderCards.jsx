@@ -1,8 +1,7 @@
 import '../css/build.css'
-import Sidebar from './Sidebar'
 
 const OrderCards = ({ orders, handleCardClick }) => {
-  // console.log('INSIDE ORDERCARDS', orders);
+  console.log('INSIDE ORDERCARDS', orders);
   return (
     <>
       {orders.map((order) =>

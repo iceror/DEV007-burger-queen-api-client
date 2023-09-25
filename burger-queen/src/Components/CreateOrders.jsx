@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import '../css/build.css'
-import { getProducts } from "../api-fn/api-utils";
+import { getOrders, getProducts } from "../api-fn/api-utils";
 import ProductCard from "./ProductCards";
 import Sidebar from "./Sidebar";
+import OrderCards from "./OrderCards";
 
 const CreateOrders = () => {
   const { user } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [mealTime, setMealTime] = useState('Desayuno');
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [readyOrders, setReadyOrders] = useState([])
+  const [showReadyOrders, setShowReadyOrders] = useState(false)
 
   // TODO por si recarga el usuario
   // let storedUser = sessionStorage.getItem('user');
@@ -27,11 +30,23 @@ const CreateOrders = () => {
 
   const handleMealTimeChange = (newMealTime) => {
     setMealTime(newMealTime);
+    setShowReadyOrders(false)
   };
 
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
+
+  const handleClick = () => {
+    fecthOrders()
+    setShowReadyOrders(true)
+  }
+
+  const fecthOrders = async () => {
+    let orders = await getOrders(user.accessToken)
+    console.log(orders.filter((order) => order.status === 'ready'));
+    setReadyOrders(orders.filter((order) => order.status === 'ready'))
+  }
 
   if (user) {
     return (
@@ -40,12 +55,14 @@ const CreateOrders = () => {
           <h2>Burger Queen</h2>
           <button className="button1" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
           <button className="button2" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
-          {/* TO DO añadir vista para entregar pedidos */}
-          <button className="button3">Listas</button>
+          <button className="button3" onClick={() => handleClick()}>Listas</button>
           <ol className="products">
-            {products.length > 0 ?
-              <ProductCard products={filteredProducts} /> :
-              <p>No hay productos 😔</p>
+            {showReadyOrders === true ? (
+              <OrderCards orders={readyOrders} />
+            ) :
+              products.length > 0 ? (
+                <ProductCard products={filteredProducts} />
+              ) : <h3>No hay productos </h3>
             }
           </ol>
           <Sidebar />
