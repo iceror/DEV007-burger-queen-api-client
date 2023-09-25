@@ -13,7 +13,7 @@
 
     grid-template-areas:
       'header header header client client'
-      'button1 button2 0 order order'
+      'button1 button2 button3 order order'
       'product product product order order'
       'product product product order order';
 
@@ -44,6 +44,24 @@
 
     .button2 {
       grid-area: button2;
+      width: 12rem;
+      height: 4rem;
+      margin: 0 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: $dark-teal;
+      font-family: $body-font;
+      font-size: 1.8rem;
+      text-align: center;
+      color: $white;
+
+      &:hover {
+        background-color: $light-teal;
+      }
+    }
+
+    .button3 {
+      grid-area: button3;
       width: 12rem;
       height: 4rem;
       margin: 0 1rem;

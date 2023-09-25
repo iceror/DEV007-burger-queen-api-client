@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
-import { UserContext, UserProvider } from './context/UserContext'
+import { useEffect, useState } from 'react'
+import { UserProvider } from './context/UserContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './Components/Login'
 import CreateOrders from './Components/CreateOrders'
