@@ -13,6 +13,7 @@ const CreateOrders = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [readyOrders, setReadyOrders] = useState([])
   const [showReadyOrders, setShowReadyOrders] = useState(false)
+  const [orderData, setOrderData] = useState(null)
 
   // TODO por si recarga el usuario
   // let storedUser = sessionStorage.getItem('user');
@@ -30,24 +31,29 @@ const CreateOrders = () => {
 
   const handleMealTimeChange = (newMealTime) => {
     setMealTime(newMealTime);
-    setShowReadyOrders(false)
+    setShowReadyOrders(false);
+    setOrderData(null)
   };
-
+  
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
-
+  
   const handleClick = () => {
     fecthOrders()
     setShowReadyOrders(true)
   }
-
+  
   const fecthOrders = async () => {
     let orders = await getOrders(user.accessToken)
-    console.log(orders.filter((order) => order.status === 'ready'));
     setReadyOrders(orders.filter((order) => order.status === 'ready'))
   }
-
+  
+  const handleCardClick = (order) => {
+    setOrderData(order); 
+  }
+  
+  // console.log(orderData);
   if (user) {
     return (
       <div className="background">
@@ -58,14 +64,14 @@ const CreateOrders = () => {
           <button className="button3" onClick={() => handleClick()}>Listas</button>
           <ol className="products">
             {showReadyOrders === true ? (
-              <OrderCards orders={readyOrders} />
+              <OrderCards orders={readyOrders} handleCardClick={handleCardClick}/>
             ) :
               products.length > 0 ? (
                 <ProductCard products={filteredProducts} />
               ) : <h3>No hay productos </h3>
             }
           </ol>
-          <Sidebar />
+          <Sidebar orderData={orderData} />
         </main>
       </div>
     )

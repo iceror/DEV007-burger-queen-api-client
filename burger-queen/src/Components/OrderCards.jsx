@@ -1,7 +1,6 @@
 import '../css/build.css'
 
 const OrderCards = ({ orders, handleCardClick }) => {
-  console.log('INSIDE ORDERCARDS', orders);
   return (
     <>
       {orders.map((order) =>

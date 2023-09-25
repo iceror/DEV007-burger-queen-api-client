@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { OrderContext } from "../context/OrderContext";
 import bin from '../assets/trash-bin.png'
@@ -17,6 +17,9 @@ const Sidebar = ({ orderData }) => {
   let orderRef = useRef(null)
   let timerRef = useRef(null)
 
+  useEffect(() => {
+    
+  }, [orderData])
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -48,7 +51,35 @@ const Sidebar = ({ orderData }) => {
     setTimerVisible(false)
   }
 
-  if (user.user.role === 'waiter') {
+  if (user.user.role === ('cook' || 'waiter') && orderData) {
+    return (
+      <div className="order-container">
+        <div className="client">
+          <h3>Cliente</h3>
+          <div className="name-input" >
+            {/* <input type="text" className="client-name" /> */}
+            <h3 className="client-name" ref={clientNameRef}>{orderData ? orderData.client : ''}</h3>
+            <p className="order-num" ref={orderIdRef}>{orderData ? '#' + orderData.id : ''}</p>
+          </div>
+        </div>
+        <div className="order">
+          <h3>Tu orden:</h3>
+          <hr />
+          <ol className="order-products" key={orderData ? orderData.id : null} ref={orderRef}>
+            {orderData ?
+              orderData.products.map(product =>
+                <li className="product-in-order" key={orderData.id + product.id}>
+                  <p>{product.name}</p>
+                  <p>{product.count}</p>
+                </li>
+              ) : ''}
+          </ol>
+          {timerVisible && <Timer orderData={orderData} />}
+          <button className="send-to-kitchen" onClick={() => handleUpdateOrder(orderData)}>Orden lista</button>
+        </div>
+      </div>
+    )
+  } else if (user.user.role === 'waiter') {
     return (
       <>
         <div className="order-container">
@@ -103,34 +134,6 @@ const Sidebar = ({ orderData }) => {
           <div className="order-products"></div>
           <button className="delete-employee">Eliminar</button>
           <button className="update-data">Actualizar datos</button>
-        </div>
-      </div>
-    )
-  } else if (user.user.role === 'cook') {
-    return (
-      <div className="order-container">
-        <div className="client">
-          <h3>Cliente</h3>
-          <div className="name-input" >
-            {/* <input type="text" className="client-name" /> */}
-            <h3 className="client-name" ref={clientNameRef}>{orderData ? orderData.client : ''}</h3>
-            <p className="order-num" ref={orderIdRef}>{orderData ? '#' + orderData.id : ''}</p>
-          </div>
-        </div>
-        <div className="order">
-          <h3>Tu orden:</h3>
-          <hr />
-          <ol className="order-products" key={orderData ? orderData.id : null} ref={orderRef}>
-            {orderData ?
-              orderData.products.map(product =>
-                <li className="product-in-order" key={orderData.id + product.id}>
-                  <p>{product.name}</p>
-                  <p>{product.count}</p>
-                </li>
-              ) : ''}
-          </ol>
-          {timerVisible && <Timer orderData={orderData} />}
-          <button className="send-to-kitchen" onClick={() => handleUpdateOrder(orderData)}>Orden lista</button>
         </div>
       </div>
     )
