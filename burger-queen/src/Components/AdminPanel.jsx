@@ -1,6 +1,6 @@
 // import { useContext } from "react"
 // import { UserContext } from "../context/UserContext"
-import Sidebar from "./Sidebar";
+import AdminSidebar from "./AdminSidebar";
 
 const AdminPanel = () => {
   // const { user } = useContext( UserContext);
@@ -13,7 +13,7 @@ const AdminPanel = () => {
           <button className="button1">Empleados</button>
           <button className="button2">Productos</button>
           <div className="orders" id="orders"></div>
-          {/* <Sidebar/> */}
+          <AdminSidebar/> 
         </div>
       </div>
     )
