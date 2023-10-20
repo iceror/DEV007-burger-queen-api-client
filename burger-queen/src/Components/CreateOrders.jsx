@@ -50,7 +50,7 @@ const CreateOrders = () => {
   }
 
   const fecthOrders = async () => {
-    let orders = await getOrders(user.accessToken)
+    let orders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
     setReadyOrders(orders.filter((order) => order.status === 'ready'))
   }
 
