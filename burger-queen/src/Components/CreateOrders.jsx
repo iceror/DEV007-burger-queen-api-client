@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import '../css/build.css'
 import { getOrders, getProducts } from "../api-fn/api-utils";
 import ProductCard from "./ProductCards";
-import Sidebar from "./Sidebar";
+import WaiterSidebar from "./WaiterSidebar";
 import OrderCards from "./OrderCards";
 
 const CreateOrders = () => {
@@ -74,7 +74,7 @@ const CreateOrders = () => {
             ) : <h3>Cargando productos...</h3>
           }
         </ol>
-        {/* <Sidebar orderData={orderData} /> */}
+        <WaiterSidebar orderData={orderData} />
       </main>
     </div>
   )
