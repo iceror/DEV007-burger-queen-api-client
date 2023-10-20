@@ -13,7 +13,7 @@ const AdminSidebar = () => {
         <hr />
         <div className="order-products"></div>
         <button className="delete-employee">Eliminar</button>
-        <button className="update-data">Actualizar datos</button>
+        <button className="update-data">Actualizar</button>
       </div>
     </div>
   )

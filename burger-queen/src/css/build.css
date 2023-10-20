@@ -349,6 +349,30 @@ h1 {
 .order-container .order .order-ready:hover {
   background-color: #F4AB2E;
 }
+.order-container .order .delete-employee {
+  background-color: #F63030;
+  width: 13rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+  float: left;
+}
+.order-container .order .update-data {
+  background-color: #f18b31;
+  width: 13rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+  float: right;
+}
 
 .order-card {
   width: 15rem;
