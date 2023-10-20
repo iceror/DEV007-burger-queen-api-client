@@ -74,7 +74,7 @@ const CreateOrders = () => {
             ) : <h3>Cargando productos...</h3>
           }
         </ol>
-        <WaiterSidebar orderData={orderData} />
+        <WaiterSidebar />
       </main>
     </div>
   )

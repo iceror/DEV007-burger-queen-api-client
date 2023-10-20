@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 // import { UserContext } from "../context/UserContext"
-import Sidebar from "./Sidebar";
 import { getOrders } from "../api-fn/api-utils";
 import OrderCards from "./OrderCards"
+import CookSidebar from "./CookSidebar";
 
 const Orders = () => {
   // const { user } = useContext(UserContext);
@@ -45,7 +45,7 @@ const Orders = () => {
               <h3>No hay órdenes pendientes</h3>
             }
           </ol>
-          {/* <Sidebar orderData={orderData} /> */}
+            <CookSidebar orderData={orderData}/>
         </main>
       </div>
     )
