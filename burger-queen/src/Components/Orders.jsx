@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react"
-import { UserContext } from "../context/UserContext"
+// import { UserContext } from "../context/UserContext"
 import Sidebar from "./Sidebar";
 import { getOrders } from "../api-fn/api-utils";
 import OrderCards from "./OrderCards"
 
 const Orders = () => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   const [orders, setOrders] = useState([])
   const [orderData, setOrderData] = useState()
   const [filteredOrders, setFilteredOrders] = useState([])
   const [orderStatus, setOrderStatus ] = useState('pending')
 
   const fetchOrders = async () => {
-    const fetchedOrders = await getOrders(user.accessToken)
+    const fetchedOrders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
     setOrders(fetchedOrders)
     setFilteredOrders(fetchedOrders.filter((order) => order.status === orderStatus))
   }
@@ -33,7 +33,6 @@ const Orders = () => {
     setOrderData(order)
   }
 
-  if (user.user.role === 'cook') {
     return (
       <div className="background">
         <main className="orders">
@@ -43,14 +42,13 @@ const Orders = () => {
           <ol className="products" >
             {orders.length > 0 ?
               <OrderCards orders={filteredOrders} handleCardClick={handleCardClick} /> :
-              <h3>No hay órdenes pendientes 😄</h3>
+              <h3>No hay órdenes pendientes</h3>
             }
           </ol>
-          <Sidebar orderData={orderData} />
+          {/* <Sidebar orderData={orderData} /> */}
         </main>
       </div>
     )
-  }
 }
 
 export default Orders

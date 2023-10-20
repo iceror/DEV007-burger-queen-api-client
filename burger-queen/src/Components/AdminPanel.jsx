@@ -1,12 +1,11 @@
-import { useContext } from "react"
-import { UserContext } from "../context/UserContext"
+// import { useContext } from "react"
+// import { UserContext } from "../context/UserContext"
 import Sidebar from "./Sidebar";
 
 const AdminPanel = () => {
-  const { user } = useContext( UserContext);
-  console.log(user);
+  // const { user } = useContext( UserContext);
+  console.log(JSON.parse(sessionStorage.getItem('user')));
 
-  if(user.user.role === 'admin'){
     return (
       <div className="background">
         <div className="orders">
@@ -14,11 +13,10 @@ const AdminPanel = () => {
           <button className="button1">Empleados</button>
           <button className="button2">Productos</button>
           <div className="orders" id="orders"></div>
-          <Sidebar/>
+          {/* <Sidebar/> */}
         </div>
       </div>
     )
-  }
 }
 
 export default AdminPanel

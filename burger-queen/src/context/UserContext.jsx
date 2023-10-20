@@ -6,11 +6,10 @@ export const useUserContext = () => useContext(UserContext)
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  // const [role, setRole] = useState(undefined);
 
   const sendUserToContext = (user) => {
+    sessionStorage.setItem('user', JSON.stringify(user));
     setUser(user)
-    // setRole(user.user.role)
   }
 
   return <UserContext.Provider value={{ user, sendUserToContext }}>

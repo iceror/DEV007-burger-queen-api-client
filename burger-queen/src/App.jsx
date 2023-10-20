@@ -1,42 +1,38 @@
-import { useEffect, useState } from 'react'
-import { UserProvider } from './context/UserContext'
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { UserProvider, useUserContext } from './context/UserContext'
 import Login from './Components/Login'
 import CreateOrders from './Components/CreateOrders'
 import Orders from './Components/Orders'
 import AdminPanel from './Components/AdminPanel'
-import './css/build.css'
 import { OrderContextProvider } from './context/OrderContext'
+import './css/build.css'
 
 function App() {
-  // const { user, sendUserToContext } = useContext(UserContext);
+  // checar si el usuario existe en el context o jalarlo de session storage 
+  // const {sendUserToContext} = useUserContext()
 
-  console.log("App Load")
-  const [userData, setUserData] = useState(() => {
-    const user = sessionStorage.getItem("user");
-    return JSON.parse(user) || null;
-  });
-
-  useEffect(() => {
-    console.log("userData updated, persist state");
-    sessionStorage.getItem("user", JSON.stringify(userData));
-  }, [userData]);
+  // console.log("App Load")
+  // useEffect(() => {
+  //   let storedUser = sessionStorage.getItem("user")
+  //   console.log(storedUser);
+  // }, []);
 
   return (
-    <BrowserRouter>
-      <UserProvider>
+    <UserProvider>
+      <BrowserRouter>
         <OrderContextProvider>
-        <>
-          <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/create-orders' element={<CreateOrders />} />
-            <Route path='/orders' element={<Orders />} />
-            <Route path='/admin-panel' element={<AdminPanel />} />
-          </Routes>
-        </>
+          <>
+            <Routes>
+              <Route path='/' element={<Login />} />
+              <Route path='/create-orders' element={<CreateOrders />} />
+              <Route path='/orders' element={<Orders />} />
+              <Route path='/admin-panel' element={<AdminPanel />} />
+            </Routes>
+          </>
         </OrderContextProvider>
-      </UserProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   )
 }
 
