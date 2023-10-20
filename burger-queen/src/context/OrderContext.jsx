@@ -66,13 +66,14 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   const sendOrderToApi = () => {
-    postOrder(order, user.accessToken)
+    // console.log('Sending order', JSON.parse(sessionStorage.getItem('user')).accessToken);
+    postOrder(order, JSON.parse(sessionStorage.getItem('user')).accessToken)
     setClient('')
     setProducts([])
   }
 
   const updateOrderInApi = (orderData) => {
-    updateOrder(orderData, user.accessToken)
+    updateOrder(orderData, JSON.parse(sessionStorage.getItem('user')).accessToken)
   }
 
   return (
