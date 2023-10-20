@@ -8,8 +8,11 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const sendUserToContext = (user) => {
-    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user))
     setUser(user)
+    // if (!user) {
+    //   setUser(sessionStorage.getItem('user', JSON.stringify(user)))
+    // }
   }
 
   return <UserContext.Provider value={{ user, sendUserToContext }}>
