@@ -10,7 +10,7 @@ const Sidebar = ({ orderData }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [timerVisible, setTimerVisible] = useState(true)
+  const [timerVisible, setTimerVisible] = useState(true);
   let clientRef = useRef('');
   let clientNameRef = useRef(null);
   let orderIdRef = useRef(null)
@@ -51,7 +51,7 @@ const Sidebar = ({ orderData }) => {
     setTimerVisible(false)
   }
 
-  if (user.user.role === ('cook' || 'waiter') && orderData) {
+  if (user.user.role === ('cook') && orderData) {
     return (
       <div className="order-container">
         <div className="client">
