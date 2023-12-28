@@ -5,7 +5,7 @@ import bin from '../assets/trash-bin.png'
 
 
 
-const WaiterSideBar = () => {
+const WaiterSideBar = ({ orderData }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   let clientRef = useRef('');
   const [show, setShow] = useState(false);
@@ -33,6 +33,8 @@ const WaiterSideBar = () => {
     }
   }
 
+  console.log('Inside waiter sidebar',orderData);
+  if (orderData === null || orderData === undefined) {
   return (
     <>
       <div className="order-container">
@@ -71,6 +73,46 @@ const WaiterSideBar = () => {
       </Modal>
     </>
   )
+  } else {
+    return (
+      <>
+      <div className="order-container">
+        <div className="client">
+          <h3>Cliente</h3>
+          <div className="name-input">
+            {orderData.client}
+          </div>
+        </div>
+        <div className="order">
+          <h3>Tu orden:</h3>
+          <hr />
+          <ol className="order-products">
+            {orderData.products.map((productInOrder) => {
+              if (productInOrder.count > 0) {
+                return (
+                  <li className="product-in-order" key={productInOrder.id}>
+                    <p>{productInOrder.name}</p>
+                    <p>{productInOrder.count} </p>
+                    <p>{productInOrder.price} </p>
+                    {/* <button className="bin" onClick={() => handleDeleteFromOrder(productInOrder.id)} ><img src={bin} alt="" /></button> */}
+                  </li>
+                )
+              }
+            })}
+          </ol>
+          <div className="total">
+            <h3 >Total: </h3>
+            <h3>${orderData.total}.00</h3>
+          </div>
+          <button className="send-to-kitchen" onClick={updateOrderInApi}>Entregar orden</button>
+        </div>
+      </div>
+      {/* <Modal show={show} onHide={() => setShow(false)}>
+        {errorMessage}
+      </Modal> */}
+    </>
+    )
+  }
 }
 
 export default WaiterSideBar

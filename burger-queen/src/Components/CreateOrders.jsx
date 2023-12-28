@@ -57,7 +57,8 @@ const CreateOrders = () => {
   const handleCardClick = (order) => {
     setOrderData(order);
   }
-
+  
+  // console.log('orderData',orderData);
   return (
     <div className="background">
       <main className="orders">
@@ -74,7 +75,7 @@ const CreateOrders = () => {
             ) : <h3>Cargando productos...</h3>
           }
         </ol>
-        <WaiterSidebar />
+        <WaiterSidebar orderData={orderData}/>
       </main>
     </div>
   )
