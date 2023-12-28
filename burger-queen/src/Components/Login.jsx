@@ -42,10 +42,30 @@ const Login = () => {
     }
   }
 
+  const onFormSubmit = async (event ) => {
+    console.log(event);
+    event.preventDefault();  
+    const response = await getAuth(username, password);
+    if (response.accessToken) {
+      sendUserToContext(response);
+
+      if(response.user.role === 'waiter'){
+        navigate('create-orders')
+      } else if(response.user.role === 'cook') {
+        navigate('orders')
+      } else if(response.user.role === 'admin'){
+        navigate('admin-panel')
+      }
+    } else {
+      setShow(true)
+      setErrorMessage(response.response.data)
+    }
+  }
+
   return (
     <>
       <h1>Burger Queen</h1>
-      <form className='login-form'>
+      <form className='login-form' onSubmit={onFormSubmit}>
         <div>
           <label htmlFor="username">usuario</label>
           <input type="text" name="username" value={username} onChange={handleUser} />
@@ -54,7 +74,7 @@ const Login = () => {
           <label htmlFor="password">contraseña</label>
           <input type="password" name="password" value={password} onChange={handlePassword} />
         </div>
-        <button type='button' onClick={handleClick}>iniciar</button>
+        <button type='submit' onClick={handleClick}>iniciar</button>
       </form>
       <Modal  show={show} onHide={() => setShow(false) }>
         { errorMessage }
