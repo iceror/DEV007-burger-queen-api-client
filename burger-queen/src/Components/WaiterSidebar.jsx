@@ -33,8 +33,14 @@ const WaiterSideBar = ({ orderData }) => {
     }
   }
 
+  const hanldeDeliverOrder = (orderData) => {
+    console.log('click on btn ');
+    updateOrderInApi(orderData)
+  }
+
   console.log('Inside waiter sidebar',orderData);
   if (orderData === null || orderData === undefined) {
+  // don't modify this code, else code in the making
   return (
     <>
       <div className="order-container">
@@ -104,7 +110,7 @@ const WaiterSideBar = ({ orderData }) => {
             <h3 >Total: </h3>
             <h3>${orderData.total}.00</h3>
           </div>
-          <button className="send-to-kitchen" onClick={updateOrderInApi}>Entregar orden</button>
+          <button className="send-to-kitchen" onClick={() => hanldeDeliverOrder(orderData)}>Entregar orden</button>
         </div>
       </div>
       {/* <Modal show={show} onHide={() => setShow(false)}>

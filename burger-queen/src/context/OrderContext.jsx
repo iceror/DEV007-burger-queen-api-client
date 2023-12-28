@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { postOrder, updateOrder } from "../api-fn/api-utils";
+import { postOrder, updateOrder, updateDeliveredOrder } from "../api-fn/api-utils";
 import { UserContext } from "./UserContext";
 
 export const OrderContext = createContext()
@@ -73,7 +73,12 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   const updateOrderInApi = (orderData) => {
-    updateOrder(orderData, JSON.parse(sessionStorage.getItem('user')).accessToken)
+    console.log(orderData.status);
+    if (orderData.status === 'pending') {
+      updateOrder(orderData, JSON.parse(sessionStorage.getItem('user')).accessToken)
+    } else if (orderData.status === 'ready') {
+      updateDeliveredOrder(orderData, JSON.parse(sessionStorage.getItem('user')).accessToken)
+    }
   }
 
   return (
