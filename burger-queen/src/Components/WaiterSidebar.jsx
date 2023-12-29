@@ -5,7 +5,7 @@ import bin from '../assets/trash-bin.png'
 
 
 
-const WaiterSideBar = ({ orderData }) => {
+const WaiterSideBar = ({ orderData, readyOrders, onDeliver }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   let clientRef = useRef('');
   const [show, setShow] = useState(false);
@@ -34,12 +34,11 @@ const WaiterSideBar = ({ orderData }) => {
   }
 
   const hanldeDeliverOrder = (orderData) => {
-    console.log('click on btn ');
-    updateOrderInApi(orderData)
+    updateOrderInApi(orderData);
+    onDeliver()
   }
 
-  console.log('Inside waiter sidebar',orderData);
-  if (orderData === null || orderData === undefined) {
+  if (orderData === null || orderData === undefined ) {
   // don't modify this code, else code in the making
   return (
     <>
@@ -79,7 +78,7 @@ const WaiterSideBar = ({ orderData }) => {
       </Modal>
     </>
   )
-  } else {
+  } else if (orderData?.status === 'ready'){
     return (
       <>
       <div className="order-container">

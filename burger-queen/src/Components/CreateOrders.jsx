@@ -11,9 +11,10 @@ const CreateOrders = () => {
   const [products, setProducts] = useState([]);
   const [mealTime, setMealTime] = useState('Desayuno');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [readyOrders, setReadyOrders] = useState([])
-  const [showReadyOrders, setShowReadyOrders] = useState(false)
-  const [orderData, setOrderData] = useState(null)
+  const [readyOrders, setReadyOrders] = useState([]);
+  const [showReadyOrders, setShowReadyOrders] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+  const [deliverdOrders, setDeliveredOrders] = useState([]);
 
   // let storedUser = sessionStorage.getItem('user');
   // useEffect(() => {
@@ -33,27 +34,37 @@ const CreateOrders = () => {
   useEffect(() => {
     fetchProducts()
   }, []);
-
+  
   const handleMealTimeChange = (newMealTime) => {
     setMealTime(newMealTime);
     setShowReadyOrders(false);
     setOrderData(null)
   };
-
+  
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
-
+  
   const handleClick = () => {
-    fecthOrders()
+    fetchOrders()
+    fetchDeliveredOrders()
     setShowReadyOrders(true)
   }
 
-  const fecthOrders = async () => {
+  const fetchOrders = async () => {
     let orders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
     setReadyOrders(orders.filter((order) => order.status === 'ready'))
   }
 
+  const fetchDeliveredOrders = async () => {
+    let orders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
+    setDeliveredOrders(orders.filter((order) => order.status === 'delivered'))
+  }
+
+  console.log('LOGGING READY ORDERS IN CREATE ORDERS COMPONENT.............', readyOrders);
+  // readyOrders array is modified after double click(?) why? 
+
+  
   const handleCardClick = (order) => {
     setOrderData(order);
   }
@@ -75,7 +86,7 @@ const CreateOrders = () => {
             ) : <h3>Cargando productos...</h3>
           }
         </ol>
-        <WaiterSidebar orderData={orderData}/>
+        <WaiterSidebar orderData={orderData} readyOrders={readyOrders} onDeliver={fetchOrders}/>
       </main>
     </div>
   )

@@ -152,7 +152,7 @@ export const updateDeliveredOrder = (order, accessToken) => {
 
   return axios.request(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
       return response.data
     })
     .catch((error) => {

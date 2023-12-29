@@ -73,7 +73,6 @@ export const OrderContextProvider = ({ children }) => {
   }
 
   const updateOrderInApi = (orderData) => {
-    console.log(orderData.status);
     if (orderData.status === 'pending') {
       updateOrder(orderData, JSON.parse(sessionStorage.getItem('user')).accessToken)
     } else if (orderData.status === 'ready') {
