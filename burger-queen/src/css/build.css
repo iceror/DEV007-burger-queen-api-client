@@ -255,6 +255,10 @@ h1 {
   width: 100%;
   border: none;
   border-radius: 10px;
+  color: white;
+  font-family: "Baloo Tammudu 2";
+  font-size: 2rem;
+  text-indent: 1rem;
 }
 .order-container .client input {
   display: flex;
