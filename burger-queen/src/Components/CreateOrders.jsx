@@ -5,8 +5,10 @@ import { getOrders, getProducts } from "../api-fn/api-utils";
 import ProductCard from "./ProductCards";
 import WaiterSidebar from "./WaiterSidebar";
 import OrderCards from "./OrderCards";
+import { useNavigate } from "react-router-dom";
 
 const CreateOrders = () => {
+  const navigate = useNavigate();
   // const { user, sendUserToContext } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [mealTime, setMealTime] = useState('Desayuno');
@@ -60,10 +62,16 @@ const CreateOrders = () => {
     setOrderData(order);
   }
 
+  const handleLogOut = () => {
+    sessionStorage.clear()
+    navigate('/')
+  }
+
   return (
     <div className="background">
       <main className="orders">
         <h2>Burger Queen</h2>
+        <button className="log-out" onClick={() => handleLogOut()}>Cerrar sesión</button>
         <button className="button1" onClick={() => handleMealTimeChange('Desayuno')}>Desayuno</button>
         <button className="button2" onClick={() => handleMealTimeChange('Almuerzo')}>Almuerzo</button>
         <button className="button3" onClick={() => handleClick()}>Listas</button>

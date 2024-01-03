@@ -43,7 +43,6 @@ const Login = () => {
   }
 
   const onFormSubmit = async (event ) => {
-    console.log(event);
     event.preventDefault();  
     const response = await getAuth(username, password);
     if (response.accessToken) {
