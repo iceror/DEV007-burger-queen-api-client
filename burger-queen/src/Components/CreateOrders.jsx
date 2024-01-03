@@ -34,42 +34,32 @@ const CreateOrders = () => {
   useEffect(() => {
     fetchProducts()
   }, []);
-  
+
   const handleMealTimeChange = (newMealTime) => {
     setMealTime(newMealTime);
     setShowReadyOrders(false);
     setOrderData(null)
   };
-  
+
   useEffect(() => {
     setFilteredProducts(products.filter((product) => product.type === mealTime))
   }, [mealTime])
-  
+
   const handleClick = () => {
     fetchOrders()
-    fetchDeliveredOrders()
     setShowReadyOrders(true)
   }
 
   const fetchOrders = async () => {
     let orders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
     setReadyOrders(orders.filter((order) => order.status === 'ready'))
-  }
-
-  const fetchDeliveredOrders = async () => {
-    let orders = await getOrders(JSON.parse(sessionStorage.getItem('user')).accessToken)
     setDeliveredOrders(orders.filter((order) => order.status === 'delivered'))
   }
 
-  console.log('LOGGING READY ORDERS IN CREATE ORDERS COMPONENT.............', readyOrders);
-  // readyOrders array is modified after double click(?) why? 
-
-  
   const handleCardClick = (order) => {
     setOrderData(order);
   }
-  
-  // console.log('orderData',orderData);
+
   return (
     <div className="background">
       <main className="orders">
@@ -86,7 +76,7 @@ const CreateOrders = () => {
             ) : <h3>Cargando productos...</h3>
           }
         </ol>
-        <WaiterSidebar orderData={orderData} readyOrders={readyOrders} onDeliver={fetchOrders}/>
+        <WaiterSidebar orderData={orderData} readyOrders={readyOrders} onDeliver={fetchOrders} deliveredOrders={deliverdOrders} />
       </main>
     </div>
   )

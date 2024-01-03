@@ -4,7 +4,6 @@ import { OrderContext } from "../context/OrderContext";
 
 const CookSidebar = ({ orderData }) => {
   const { updateOrderInApi } = useContext(OrderContext);
-
   let clientNameRef = useRef(null);
   let orderIdRef = useRef(null);
   let orderRef = useRef(null);
@@ -22,8 +21,7 @@ const CookSidebar = ({ orderData }) => {
     <div className="order-container">
       <div className="client">
         <h3>Cliente</h3>
-        <div className="name-input" >
-          {/* <input type="text" className="client-name" /> */}
+        <div className="name-input">
           <h3 className="client-name" ref={clientNameRef}>{orderData ? orderData.client : ''}</h3>
           <p className="order-num" ref={orderIdRef}>{orderData ? '#' + orderData.id : ''}</p>
         </div>
