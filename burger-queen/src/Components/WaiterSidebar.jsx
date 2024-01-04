@@ -3,14 +3,14 @@ import { OrderContext } from "../context/OrderContext";
 import Modal from './Modal'
 import bin from '../assets/trash-bin.png'
 
-const WaiterSideBar = ({ orderData, readyOrders, onDeliver, deliveredOrders }) => {
+const WaiterSideBar = ({ orderData, onDeliver }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   let clientRef = useRef('');
   const [show, setShow] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const clientNameRef = useRef('');
-  // const orderRef = useRef('');
-  const productInOrderRef = useRef('');
+  const orderIdRef = useRef('');
+  const orderRef = useRef('');
 
   const handleClient = (event) => {
     sendClientToContext(event.target.value)
@@ -34,11 +34,12 @@ const WaiterSideBar = ({ orderData, readyOrders, onDeliver, deliveredOrders }) =
     }
   }
 
-  const hanldeDeliverOrder = (orderData) => {
+  const handleDeliverOrder = (orderData) => {
     updateOrderInApi(orderData);
     onDeliver();
-    clientNameRef.current.innerHTML = '';
-    productInOrderRef.current.innerHTML = '';
+    clientNameRef.current.textContent = '';
+    orderIdRef.current.textContent = '';
+    orderRef.current.innerHTML = '';
   }
 
   if (orderData === null || orderData === undefined) {
@@ -89,30 +90,29 @@ const WaiterSideBar = ({ orderData, readyOrders, onDeliver, deliveredOrders }) =
             <h3>Cliente</h3>
             <div className="name-input" >
               <h3 className="client-name" ref={clientNameRef}>{orderData ? orderData.client : ''}</h3>
+              <p className="order-num" ref={orderIdRef}>{orderData ? '#' + orderData.id : ''}</p>
             </div>
           </div>
           <div className="order" >
             <h3>Tu orden:</h3>
             <hr />
-            <ol className="order-products">
-              {
+            <ol className="order-products" key={orderData ? orderData.id : null} ref={orderRef}>
+              {orderData ?
                 orderData.products.map(productInOrder => {
-                  if (productInOrder.count > 0) {
-                    return (
-                      <li className="product-in-order" key={productInOrder.id} ref={productInOrderRef}>
-                        <p>{productInOrder.name}</p>
-                        <p>{productInOrder.count} </p>
-                        <p>{productInOrder.price} </p>
-                      </li>
-                    )
-                  }
-                })}
+                  return (
+                    <li className="product-in-order" key={productInOrder.id}>
+                      <p>{productInOrder.name}</p>
+                      <p>{productInOrder.count} </p>
+                      <p>{productInOrder.price} </p>
+                    </li>
+                  )
+                }) : ''}
             </ol>
             <div className="total">
               <h3 >Total: </h3>
               <h3>${orderData.total}.00</h3>
             </div>
-            <button className="send-to-kitchen" onClick={() => hanldeDeliverOrder(orderData, deliveredOrders)}>Entregar orden</button>
+            <button className="send-to-kitchen" onClick={() => handleDeliverOrder(orderData)}>Entregar orden</button>
           </div>
         </div>
       </>
