@@ -4,7 +4,7 @@ const OrderCards = ({ orders, handleCardClick }) => {
   return (
     <>
       {orders.map((order) =>
-        <li className="order-card" key={order.id} onClick={event => handleCardClick(order)}>
+        <li className="order-card" key={order.client + order.id} onClick={event => handleCardClick(order)}>
           <div className='client'>
             <p>{order.client}</p>
             <p>#{order.id}</p>
