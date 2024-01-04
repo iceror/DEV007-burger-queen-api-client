@@ -3,7 +3,7 @@ import { OrderContext } from "../context/OrderContext";
 import Modal from './Modal'
 import bin from '../assets/trash-bin.png'
 
-const WaiterSideBar = ({ orderData, onDeliver }) => {
+const WaiterSideBar = ({ orderData, onDeliver, total, cleanTotal }) => {
   const { products, deleteFromOrder, order, sendClientToContext, orderTotal, sendOrderToApi, updateOrderInApi } = useContext(OrderContext);
   let clientRef = useRef('');
   const [show, setShow] = useState(false);
@@ -40,6 +40,7 @@ const WaiterSideBar = ({ orderData, onDeliver }) => {
     clientNameRef.current.textContent = '';
     orderIdRef.current.textContent = '';
     orderRef.current.innerHTML = '';
+    cleanTotal()
   }
 
   if (orderData === null || orderData === undefined) {
@@ -108,9 +109,9 @@ const WaiterSideBar = ({ orderData, onDeliver }) => {
                   )
                 }) : ''}
             </ol>
-            <div className="total">
-              <h3 >Total: </h3>
-              <h3>${orderData.total}.00</h3>
+            <div className="total" >
+              <h3>Total: </h3>
+              <h3>${total}.00</h3>
             </div>
             <button className="send-to-kitchen" onClick={() => handleDeliverOrder(orderData)}>Entregar orden</button>
           </div>
