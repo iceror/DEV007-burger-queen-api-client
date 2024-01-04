@@ -80,6 +80,7 @@ export const OrderContextProvider = ({ children }) => {
     }
   }
 
+  // Timer function here, then, send to Timer component ?
   return (
     <OrderContext.Provider value={{ order, products, sendClientToContext, addToOrder, deleteFromOrder, deleteOrder, orderTotal, sendOrderToApi, updateOrderInApi }}>{children}</OrderContext.Provider>
   )

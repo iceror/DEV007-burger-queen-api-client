@@ -105,7 +105,8 @@ export const updateOrder = (order, accessToken) => {
   let data = JSON.stringify(
     {
       'status': 'ready',
-      'dateProcessed': new Date().toLocaleString()
+      'dateProcessed': new Date().toLocaleString(),
+      'timeElapsed': 'setTime elapsed here'
     }
   );
 
@@ -136,6 +137,8 @@ export const updateDeliveredOrder = (order, accessToken) => {
     {
       'status': 'delivered',
       'dateProcessed': new Date().toLocaleString()
+      // totalPreparationTime
+      // i want to set to the order object the total time it took to prepare and deliver it
     }
   );
 

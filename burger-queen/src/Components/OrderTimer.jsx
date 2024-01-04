@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Timer = ({ orderData }) => {
   if (orderData) {
-    const [time, setTime] = useState({ minutes: 0, seconds: 0 })
+    const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 
     const timeDifference = () => {
       const dateEntry = new Date(orderData.dateEntry);
@@ -19,15 +19,19 @@ const Timer = ({ orderData }) => {
         const interval = setInterval(() => {
           setTime(timeDifference());
         }, 1000);
-
+        
         return () => {
           clearInterval(interval);
         };
       } else if (orderData.status === 'ready') {
-        setTime(timeDifference())
+        setTime(timeDifference());
       }
     }, [orderData]);
 
+    // stop timer when order is ready(?) does this code do that?
+    if (orderData.status === 'ready') {
+      console.log(time);
+    }
     return (
       <>
         <h3 className="timer">{time ? time.minutes + ':' + time.seconds : ''}</h3>
