@@ -20,15 +20,15 @@ const Timer = ({ orderData }) => {
           setTime(timeDifference());
         }, 1000);
         
-        return () => {
-          clearInterval(interval);
-        };
+        // return () => {
+        //   clearInterval(interval);
+        // };
       } else if (orderData.status === 'ready') {
         setTime(timeDifference());
       }
     }, [orderData]);
 
-    // stop timer when order is ready(?) does this code do that?
+    // stop timer when order is delivered(?) does this code do that?
     if (orderData.status === 'ready') {
       console.log(time);
     }

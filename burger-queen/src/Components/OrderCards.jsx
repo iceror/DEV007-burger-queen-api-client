@@ -1,4 +1,5 @@
 import '../css/build.css'
+import Timer from './OrderTimer'
 
 const OrderCards = ({ orders, handleCardClick }) => {
   return (
@@ -16,9 +17,11 @@ const OrderCards = ({ orders, handleCardClick }) => {
               <p>{product.count}</p>
             </div>
           )}
+          <section className='timer'>
+            <Timer orderData={order}/>
+          </section>
         </li>
-      )
-      }
+      )}
     </>
   )
 }
