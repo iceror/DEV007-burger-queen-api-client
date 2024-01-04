@@ -121,13 +121,26 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr 0.8fr 0.8fr;
   grid-template-rows: 5rem 5rem 13.4rem 13.4rem 13.4rem;
   row-gap: 1rem;
-  grid-template-areas: "header header header client client" "button1 button2 button3 order order" "product product product order order" "product product product order order";
+  grid-template-areas: "header header log-out client client" "button1 button2 button3 order order" "product product product order order" "product product product order order";
 }
 .background .orders h2 {
   grid-area: header;
   font-family: "Holtwood One SC";
   color: #283D3B;
   font-size: 3rem;
+}
+.background .orders .log-out {
+  grid-area: log-out;
+  width: 12rem;
+  height: 4rem;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #e82929;
+  font-family: "Baloo Tammudu 2";
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
 }
 .background .orders .button1 {
   grid-area: button1;
@@ -355,7 +368,7 @@ h1 {
   background-color: #F4AB2E;
 }
 .order-container .order .delete-employee {
-  background-color: #F63030;
+  background-color: #e82929;
   width: 13rem;
   height: 4rem;
   border: none;

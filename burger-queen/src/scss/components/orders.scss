@@ -12,7 +12,7 @@
     row-gap: 1rem;
 
     grid-template-areas:
-      'header header header client client'
+      'header header log-out client client'
       'button1 button2 button3 order order'
       'product product product order order'
       'product product product order order';
@@ -24,6 +24,19 @@
       font-size: 3rem;
     }
 
+    .log-out {
+      grid-area: log-out;
+      width: 12rem;
+      height: 4rem;
+      margin: 0 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: $red;
+      font-family: $body-font;
+      font-size: 1.8rem;
+      text-align: center;
+      color: $white;
+    }
     .button1 {
       grid-area: button1;
       width: 12rem;
