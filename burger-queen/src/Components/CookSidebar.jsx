@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import Timer from "./OrderTimer";
 import { OrderContext } from "../context/OrderContext";
 
-const CookSidebar = ({ orderData }) => {
+const CookSidebar = ({ orderData, onReady }) => {
   const { updateOrderInApi } = useContext(OrderContext);
   let clientNameRef = useRef(null);
   let orderIdRef = useRef(null);
@@ -10,11 +10,13 @@ const CookSidebar = ({ orderData }) => {
   const [timerVisible, setTimerVisible] = useState(true);
 
   const handleUpdateOrder = (orderData) => {
+    // send time passed from timer in the update order in api function 
     updateOrderInApi(orderData);
+    onReady();
     clientNameRef.current.textContent = '';
     orderIdRef.current.textContent = '';
     orderRef.current.innerHTML = '';
-    setTimerVisible(false)
+    setTimerVisible(false);
   }
 
   return (
